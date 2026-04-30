@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How to use Together — a quick guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #f4ede0;
+    --ink: #2d2418;
+    --ink-soft: #5c4f3c;
+    --ink-faint: #8a7d6a;
+    --rose: #b8625a;
+    --sage: #7a8568;
+    --gold: #c4904a;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Inter', sans-serif;
+    font-size: 17px;
+    line-height: 1.6;
+    padding: 40px 24px;
+  }
+  .page {
+    max-width: 680px;
+    margin: 0 auto;
+    background: #fbf6ec;
+    border-radius: 24px;
+    padding: 48px 40px;
+    box-shadow: 0 4px 24px rgba(45, 36, 24, 0.1);
+  }
+  header {
+    text-align: center;
+    margin-bottom: 36px;
+    padding-bottom: 28px;
+    border-bottom: 1px solid rgba(45, 36, 24, 0.1);
+  }
+  .mark {
+    display: inline-block;
+    width: 56px; height: 56px;
+    border-radius: 50%;
+    background: var(--ink);
+    color: var(--paper);
+    line-height: 56px;
+    font-family: 'Fraunces', serif;
+    font-size: 28px;
+    font-style: italic;
+    margin-bottom: 16px;
+  }
+  h1 {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: 44px;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    margin-bottom: 10px;
+  }
+  h1 em { font-style: italic; color: var(--rose); }
+  .subtitle {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    color: var(--ink-soft);
+    font-size: 19px;
+  }
+  h2 {
+    font-family: 'Fraunces', serif;
+    font-size: 24px;
+    font-weight: 500;
+    margin-top: 32px;
+    margin-bottom: 14px;
+    color: var(--ink);
+  }
+  h2 em { font-style: italic; color: var(--rose); font-weight: 400; }
+  p { margin-bottom: 14px; color: var(--ink-soft); }
+  p strong { color: var(--ink); font-weight: 600; }
+  .step {
+    display: flex;
+    gap: 18px;
+    margin-bottom: 16px;
+    align-items: flex-start;
+  }
+  .step-num {
+    flex-shrink: 0;
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    background: var(--ink);
+    color: var(--paper);
+    font-family: 'Fraunces', serif;
+    font-size: 18px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2px;
+  }
+  .step-body { flex: 1; padding-top: 4px; }
+  .step-body strong { display: block; color: var(--ink); margin-bottom: 4px; font-size: 18px; }
+  .step-body p { margin-bottom: 0; }
+  .platform {
+    background: white;
+    border-radius: 14px;
+    padding: 22px 24px;
+    margin-bottom: 16px;
+    border-left: 3px solid var(--rose);
+  }
+  .platform h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 8px;
+  }
+  .platform.android { border-left-color: var(--sage); }
+  .icon-box {
+    display: inline-block;
+    background: #f4ede0;
+    border: 1px solid rgba(45, 36, 24, 0.15);
+    border-radius: 4px;
+    padding: 1px 8px;
+    font-size: 14px;
+    margin: 0 2px;
+  }
+  .pull-quote {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 21px;
+    color: var(--ink);
+    text-align: center;
+    padding: 24px 12px;
+    margin: 24px 0;
+    border-top: 1px solid rgba(45, 36, 24, 0.1);
+    border-bottom: 1px solid rgba(45, 36, 24, 0.1);
+    line-height: 1.4;
+  }
+  .tip {
+    background: rgba(122, 133, 104, 0.1);
+    border-radius: 12px;
+    padding: 18px 22px;
+    margin: 18px 0;
+    font-size: 15px;
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .tip strong { color: var(--ink); }
+  ul { padding-left: 22px; margin-bottom: 14px; color: var(--ink-soft); }
+  ul li { margin-bottom: 6px; }
+  footer {
+    text-align: center;
+    margin-top: 40px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(45, 36, 24, 0.1);
+    color: var(--ink-faint);
+    font-style: italic;
+    font-family: 'Fraunces', serif;
+    font-size: 15px;
+  }
+  .url-placeholder {
+    background: white;
+    border: 1.5px dashed rgba(45, 36, 24, 0.2);
+    border-radius: 10px;
+    padding: 14px 18px;
+    text-align: center;
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    color: var(--ink-soft);
+    margin: 12px 0 18px;
+    font-size: 17px;
+  }
+
+  @media print {
+    body { background: white; padding: 20px; }
+    .page { box-shadow: none; background: white; padding: 0; }
+  }
+  @media (max-width: 520px) {
+    body { padding: 20px 12px; }
+    .page { padding: 32px 22px; }
+    h1 { font-size: 36px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <header>
+    <div class="mark">T</div>
+    <h1>Welcome to <em>Together</em></h1>
+    <p class="subtitle">a small guide to getting started</p>
+  </header>
+
+  <p>Together is a set of gentle games to help you spend meaningful time with someone living with dementia. There's nothing to install from an app store, no account to make, no fees. Just open the link and you're in.</p>
+
+  <p class="pull-quote">"There are no wrong answers. Just stories."</p>
+
+  <h2>Step <em>one</em> — open the link</h2>
+
+  <p>You should have been sent a web link. Tap it on your phone or tablet, or paste it into your browser. The link will look something like this:</p>
+
+  <div class="url-placeholder">[ your Together link will go here ]</div>
+
+  <p>It opens straight away. The first time, it'll ask for the name of the person you're spending time with, and their pronouns — that's just so the games feel personal. You only do that once.</p>
+
+  <h2>Step <em>two</em> — add it to your home screen</h2>
+
+  <p>This is the trick that makes it feel like a real app. Once it's on the home screen, you tap a Together icon — the same way you'd open WhatsApp or anything else.</p>
+
+  <div class="platform">
+    <h3>📱 On an iPhone or iPad</h3>
+    <p>1. Open the link in <strong>Safari</strong> (the blue compass icon).</p>
+    <p>2. Tap the share button <span class="icon-box">⬆︎</span> at the bottom of the screen.</p>
+    <p>3. Scroll down and tap <strong>Add to Home Screen</strong>.</p>
+    <p>4. Tap <strong>Add</strong>. You'll see a Together icon appear on your home screen — that's it.</p>
+  </div>
+
+  <div class="platform android">
+    <h3>📱 On an Android phone or tablet</h3>
+    <p>1. Open the link in <strong>Chrome</strong>.</p>
+    <p>2. Tap the menu <span class="icon-box">⋮</span> at the top right.</p>
+    <p>3. Tap <strong>Install app</strong> or <strong>Add to Home screen</strong>.</p>
+    <p>4. Confirm. The icon appears on your home screen.</p>
+  </div>
+
+  <h2>Step <em>three</em> — choose a game</h2>
+
+  <p>From the home screen, you'll see seven games. They all work the same way: <strong>you read a card aloud, ask the prompts, and listen.</strong> Tap how it went — Great, Good, or Skip — and the next card appears. Each session can be as long or short as feels right.</p>
+
+  <ul>
+    <li><strong>I've Been There</strong> — places spark stories.</li>
+    <li><strong>Memory Game</strong> — gentle recall, one round at a time.</li>
+    <li><strong>Songs of a Life</strong> — music opens doors that words can't.</li>
+    <li><strong>The Five Senses</strong> — a smell, a sound, a taste.</li>
+    <li><strong>Faces of the Family</strong> — add real photos. The most personal one.</li>
+    <li><strong>The Way We Did It</strong> — let them teach you how it was done.</li>
+    <li><strong>Then &amp; Now</strong> — a lifetime of changes, side by side.</li>
+  </ul>
+
+  <h2>A few <em>gentle</em> tips</h2>
+
+  <div class="tip">
+    <p><strong>There's no scoring or right answer.</strong> The "Great / Good / Skip" buttons are just for you, to help you notice what they're enjoying. Not for them.</p>
+  </div>
+
+  <div class="tip">
+    <p><strong>Sit beside, not opposite.</strong> Hold the phone at a comfortable angle. This isn't a quiz — it's a conversation. Their face matters more than the screen.</p>
+  </div>
+
+  <div class="tip">
+    <p><strong>Skip freely.</strong> If a card doesn't land, move on. Some days a particular memory won't be there, and that's fine.</p>
+  </div>
+
+  <div class="tip">
+    <p><strong>The Faces game is the most powerful — and the most work.</strong> Set aside 15 minutes one quiet evening to add 8-10 photos with names, relationships, and a one-line note for each. After that, it's the game most people return to.</p>
+  </div>
+
+  <div class="tip">
+    <p><strong>Photos stay private.</strong> Anything you add is stored only on the device you added it on. Nothing is uploaded anywhere.</p>
+  </div>
+
+  <h2>If something goes <em>wrong</em></h2>
+
+  <p>If the link doesn't open, or the home screen icon disappears, just open the link again — your settings and any photos you added will still be there on the same device. The app remembers everything for you.</p>
+
+  <footer>
+    Made with care, for the people who care.
+  </footer>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="theme-color" content="#f4ede0">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Together">
+<title>The Five Senses — Together</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #f4ede0;
+    --paper-dark: #ebe1cf;
+    --ink: #2d2418;
+    --ink-soft: #5c4f3c;
+    --ink-faint: #8a7d6a;
+    --rose: #b8625a;
+    --rose-soft: #d4877e;
+    --sage: #7a8568;
+    --gold: #c4904a;
+    --shadow: rgba(45, 36, 24, 0.08);
+    --shadow-strong: rgba(45, 36, 24, 0.18);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+  html, body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Inter', -apple-system, sans-serif;
+    font-size: 17px;
+    line-height: 1.5;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+  body {
+    background-image:
+      radial-gradient(circle at 20% 80%, rgba(122, 133, 104, 0.08) 0%, transparent 45%),
+      radial-gradient(circle at 90% 10%, rgba(196, 144, 74, 0.07) 0%, transparent 50%);
+    padding: 20px 18px 40px;
+  }
+  .container { max-width: 560px; margin: 0 auto; }
+
+  .topbar {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 28px; gap: 12px;
+  }
+  .back-link {
+    display: inline-flex; align-items: center; gap: 6px;
+    color: var(--ink-soft); text-decoration: none; font-size: 14px; font-weight: 500;
+    padding: 8px 12px; margin-left: -12px; border-radius: 8px;
+  }
+  .back-link:hover { background: rgba(45, 36, 24, 0.05); }
+  .game-name {
+    font-family: 'Fraunces', serif; font-style: italic;
+    font-size: 15px; color: var(--ink-faint);
+  }
+
+  .title-block { text-align: center; margin-bottom: 24px; }
+  h1 {
+    font-family: 'Fraunces', serif; font-weight: 400;
+    font-size: clamp(34px, 8vw, 44px); line-height: 1.05;
+    letter-spacing: -0.02em; margin-bottom: 6px;
+  }
+  h1 em { font-style: italic; color: var(--sage); }
+  .subtitle {
+    font-family: 'Fraunces', serif; font-style: italic;
+    color: var(--ink-soft); font-size: 16px; font-weight: 300;
+  }
+
+  .stats {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 12px; margin-bottom: 28px;
+  }
+  .stat {
+    background: rgba(255, 255, 255, 0.5);
+    border: 1px solid rgba(45, 36, 24, 0.06);
+    border-radius: 12px; padding: 12px; text-align: center;
+  }
+  .stat-value {
+    font-family: 'Fraunces', serif; font-size: 26px;
+    font-weight: 500; line-height: 1; margin-bottom: 4px;
+  }
+  .stat-value.great { color: var(--rose); }
+  .stat-value.good { color: var(--sage); }
+  .stat-label {
+    font-size: 11px; text-transform: uppercase;
+    letter-spacing: 0.08em; color: var(--ink-faint);
+  }
+
+  /* Picker */
+  .picker {
+    background: #fbf6ec; border: 1px solid rgba(45, 36, 24, 0.08);
+    border-radius: 18px; padding: 24px 22px;
+    box-shadow: 0 2px 12px var(--shadow);
+  }
+  .picker.hidden { display: none; }
+  .picker-title {
+    font-family: 'Fraunces', serif; font-size: 20px; font-weight: 500;
+    margin-bottom: 16px; text-align: center;
+  }
+  .sense-grid {
+    display: grid; grid-template-columns: repeat(2, 1fr);
+    gap: 10px; margin-bottom: 20px;
+  }
+  .sense-btn {
+    padding: 18px 14px;
+    border: 1.5px solid rgba(45, 36, 24, 0.12);
+    border-radius: 12px; background: white;
+    font-family: 'Fraunces', serif; font-size: 17px;
+    font-weight: 500; color: var(--ink);
+    cursor: pointer; transition: all 0.2s;
+    display: flex; flex-direction: column; gap: 6px;
+    align-items: center; line-height: 1.2;
+  }
+  .sense-btn:hover { border-color: var(--rose-soft); transform: translateY(-1px); }
+  .sense-btn.active {
+    background: var(--ink); color: var(--paper); border-color: var(--ink);
+  }
+  .sense-emoji { font-size: 28px; }
+
+  .how-to {
+    background: rgba(255, 255, 255, 0.6); border-radius: 10px;
+    padding: 16px; margin-bottom: 18px; font-size: 14px;
+    color: var(--ink-soft); line-height: 1.55;
+  }
+  .how-to strong { color: var(--ink); font-weight: 600; }
+
+  .start-btn {
+    width: 100%; padding: 16px;
+    background: var(--sage); color: white; border: none;
+    border-radius: 12px; font-family: 'Fraunces', serif;
+    font-size: 18px; font-weight: 500; cursor: pointer;
+    transition: background 0.2s, transform 0.1s;
+  }
+  .start-btn:hover { background: #6a7558; }
+  .start-btn:active { transform: scale(0.98); }
+  .start-btn:disabled {
+    background: rgba(45, 36, 24, 0.15); color: var(--ink-faint);
+    cursor: not-allowed;
+  }
+
+  /* Stage */
+  .stage { display: none; }
+  .stage.active { display: block; }
+
+  .sense-tag {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-family: 'Fraunces', serif; font-style: italic;
+    font-size: 14px; color: var(--ink-soft); margin-bottom: 10px;
+    padding: 6px 14px; background: rgba(255, 255, 255, 0.7);
+    border-radius: 100px;
+  }
+
+  .cue-card {
+    background: white; border: 1px solid rgba(45, 36, 24, 0.08);
+    border-radius: 24px; padding: 44px 28px;
+    text-align: center; box-shadow: 0 4px 20px var(--shadow);
+    margin-bottom: 24px; position: relative; overflow: hidden;
+  }
+  .cue-card::before {
+    content: attr(data-bg-emoji); position: absolute;
+    top: -10px; right: -20px; font-size: 160px;
+    opacity: 0.05; line-height: 1;
+  }
+  .cue-text {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(28px, 6.5vw, 36px);
+    font-weight: 400; line-height: 1.2;
+    letter-spacing: -0.01em; position: relative;
+    font-style: italic;
+  }
+
+  .prompts-block {
+    background: #fbf6ec; border: 1px solid rgba(45, 36, 24, 0.06);
+    border-radius: 18px; padding: 22px; margin-bottom: 22px;
+  }
+  .prompts-label {
+    font-size: 12px; text-transform: uppercase;
+    letter-spacing: 0.08em; color: var(--ink-faint);
+    margin-bottom: 14px; font-weight: 600;
+  }
+  .prompt-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .prompt-item {
+    background: white; border: 1px solid rgba(45, 36, 24, 0.08);
+    border-radius: 10px; padding: 12px 16px;
+    font-family: 'Fraunces', serif; font-style: italic;
+    font-size: 16px; color: var(--ink-soft);
+    cursor: pointer; transition: all 0.2s; line-height: 1.4;
+  }
+  .prompt-item:hover { border-color: var(--rose-soft); }
+  .prompt-item.crossed {
+    text-decoration: line-through;
+    text-decoration-color: var(--rose);
+    color: var(--ink-faint); background: rgba(255, 255, 255, 0.4);
+  }
+
+  .engagement-label {
+    text-align: center; font-family: 'Fraunces', serif;
+    font-style: italic; color: var(--ink-soft);
+    font-size: 17px; margin-bottom: 14px;
+  }
+  .engagement-grid {
+    display: grid; grid-template-columns: 1fr 1fr 1fr;
+    gap: 8px; margin-bottom: 16px;
+  }
+  .engage-btn {
+    padding: 18px 10px; border: none; border-radius: 14px;
+    cursor: pointer; font-family: inherit; font-size: 14px;
+    font-weight: 600; transition: transform 0.1s;
+    display: flex; flex-direction: column; gap: 4px;
+    align-items: center; line-height: 1.2;
+  }
+  .engage-btn:active { transform: scale(0.96); }
+  .engage-btn .big { font-size: 22px; }
+  .engage-btn.great { background: var(--rose); color: white; }
+  .engage-btn.good { background: var(--sage); color: white; }
+  .engage-btn.skip {
+    background: white; border: 1.5px solid rgba(45, 36, 24, 0.12);
+    color: var(--ink-soft);
+  }
+  .engage-btn small { font-weight: 400; opacity: 0.85; font-size: 11px; }
+
+  .end-link {
+    display: block; text-align: center; color: var(--ink-faint);
+    text-decoration: underline; text-decoration-color: rgba(138, 125, 106, 0.4);
+    font-size: 14px; cursor: pointer; padding: 8px;
+  }
+
+  /* End */
+  .end-screen { display: none; text-align: center; padding: 20px 10px; }
+  .end-screen.active { display: block; }
+  .end-mark {
+    font-family: 'Fraunces', serif; font-size: 48px;
+    color: var(--sage); margin-bottom: 12px; font-style: italic;
+  }
+  .end-title { font-family: 'Fraunces', serif; font-size: 32px; margin-bottom: 10px; font-weight: 400; }
+  .end-sub {
+    color: var(--ink-soft); margin-bottom: 28px;
+    font-family: 'Fraunces', serif; font-style: italic; font-size: 18px;
+  }
+  .end-stats {
+    background: white; border-radius: 16px; padding: 20px;
+    margin-bottom: 24px; border: 1px solid rgba(45, 36, 24, 0.08);
+  }
+  .end-stats-row { display: flex; justify-content: space-around; }
+  .end-stat-num {
+    font-family: 'Fraunces', serif; font-size: 36px;
+    font-weight: 500; color: var(--rose); line-height: 1;
+  }
+  .end-stat-label {
+    font-size: 12px; text-transform: uppercase;
+    letter-spacing: 0.08em; color: var(--ink-faint); margin-top: 6px;
+  }
+  .end-actions { display: flex; flex-direction: column; gap: 10px; }
+  .end-btn {
+    padding: 14px; border-radius: 12px;
+    font-family: 'Fraunces', serif; font-size: 17px; font-weight: 500;
+    cursor: pointer; border: 1.5px solid var(--ink);
+    background: var(--ink); color: var(--paper);
+    text-decoration: none; display: block; text-align: center;
+  }
+  .end-btn.secondary { background: transparent; color: var(--ink); }
+
+  @keyframes slideIn {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .slide-in { animation: slideIn 0.4s ease-out; }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <div class="topbar">
+    <a href="index.html" class="back-link">← Back</a>
+    <span class="game-name">The Five Senses</span>
+  </div>
+
+  <!-- PICKER -->
+  <div id="picker">
+    <div class="title-block">
+      <h1>The Five <em>Senses</em></h1>
+      <p class="subtitle">a smell, a sound, a taste — the deepest doors</p>
+    </div>
+
+    <div class="picker">
+      <h2 class="picker-title">Choose a sense</h2>
+      <div class="sense-grid">
+        <button class="sense-btn" data-sense="smell">
+          <span class="sense-emoji">👃</span>Smell
+        </button>
+        <button class="sense-btn" data-sense="taste">
+          <span class="sense-emoji">👅</span>Taste
+        </button>
+        <button class="sense-btn" data-sense="sound">
+          <span class="sense-emoji">👂</span>Sound
+        </button>
+        <button class="sense-btn" data-sense="touch">
+          <span class="sense-emoji">✋</span>Touch
+        </button>
+        <button class="sense-btn" data-sense="sight" style="grid-column: span 2;">
+          <span class="sense-emoji">👁️</span>Sight
+        </button>
+        <button class="sense-btn" data-sense="all" style="grid-column: span 2;">
+          <span class="sense-emoji">✨</span>All five mixed
+        </button>
+      </div>
+
+      <div class="how-to">
+        <strong>How to play.</strong> A sensory memory cue appears — a smell, a sound, a taste from years gone by. Read it aloud slowly. Sensory memories often run deeper than words. There are no wrong answers.
+      </div>
+
+      <button class="start-btn" id="startBtn" disabled>Begin</button>
+    </div>
+  </div>
+
+  <!-- GAME -->
+  <div id="game" class="stage">
+    <div class="title-block">
+      <h1>The Five <em>Senses</em></h1>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="stat-value" id="totalCount">0</div><div class="stat-label">Cues</div></div>
+      <div class="stat"><div class="stat-value great" id="greatCount">0</div><div class="stat-label">Great</div></div>
+      <div class="stat"><div class="stat-value good" id="goodCount">0</div><div class="stat-label">Good</div></div>
+    </div>
+
+    <div class="slide-in" id="cardWrap">
+      <div style="text-align:center;">
+        <span class="sense-tag" id="senseTag"><span id="senseEmoji">👃</span> <span id="senseName">smell</span></span>
+      </div>
+      <div class="cue-card" id="cueCard" data-bg-emoji="✨">
+        <p class="cue-text" id="cueText">—</p>
+      </div>
+
+      <div class="prompts-block">
+        <p class="prompts-label">💬 Try one of these</p>
+        <ul class="prompt-list" id="promptList"></ul>
+      </div>
+
+      <p class="engagement-label">How did <span id="theyName">they</span> get on?</p>
+      <div class="engagement-grid">
+        <button class="engage-btn great" data-result="great">
+          <span class="big">🌟</span>Great<small>lots came back</small>
+        </button>
+        <button class="engage-btn good" data-result="good">
+          <span class="big">👍</span>Good<small>something stirred</small>
+        </button>
+        <button class="engage-btn skip" data-result="skip">
+          <span class="big">→</span>Skip<small>not this one</small>
+        </button>
+      </div>
+
+      <a class="end-link" id="endSession">↩ End session</a>
+    </div>
+  </div>
+
+  <!-- END -->
+  <div id="end" class="end-screen">
+    <div class="end-mark">✿</div>
+    <h1 class="end-title">A gentle journey</h1>
+    <p class="end-sub">the senses remember what the mind forgets</p>
+
+    <div class="end-stats">
+      <div class="end-stats-row">
+        <div><div class="end-stat-num" id="endTotal">0</div><div class="end-stat-label">Cues</div></div>
+        <div><div class="end-stat-num" id="endGreat">0</div><div class="end-stat-label">Great</div></div>
+        <div><div class="end-stat-num" id="endGood">0</div><div class="end-stat-label">Good</div></div>
+      </div>
+    </div>
+
+    <div class="end-actions">
+      <a href="#" class="end-btn" id="playAgain">Play again</a>
+      <a href="index.html" class="end-btn secondary">Back to all games</a>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  const SETTINGS_KEY = 'together_settings';
+  function getSettings() { try { return JSON.parse(localStorage.getItem(SETTINGS_KEY)) || null; } catch(e) { return null; } }
+  const settings = getSettings() || { name: 'they', pronoun: 'they' };
+  document.getElementById('theyName').textContent = settings.name;
+
+  // Sensory cue catalogue — heavily British, mid-20th-century-leaning
+  const CUES = {
+    smell: [
+      "Coal smoke on a winter morning",
+      "Bonfire night — the smell of the fire and gunpowder",
+      "Sunday roast cooking in the oven",
+      "Fresh bread from the bakery",
+      "The chip shop on a Friday night",
+      "Lavender water or eau de cologne",
+      "The seaside — salt and seaweed",
+      "Wet wool drying by the fire",
+      "Old books and library shelves",
+      "Lily of the valley",
+      "Soap flakes and washing on Monday",
+      "Pipe tobacco",
+      "Polished wooden floors",
+      "Pear drops",
+      "Brylcreem or hair tonic",
+      "A new leather school satchel",
+      "Cabbage on the boil",
+      "Cut grass on a summer afternoon",
+      "Eucalyptus or Vicks rub",
+      "The barber's shop"
+    ],
+    taste: [
+      "Bread and dripping",
+      "A boiled sweet from a paper bag",
+      "Sherbet lemons or pear drops",
+      "Sunday trifle with hundreds and thousands",
+      "A bottle of dandelion and burdock",
+      "Blackberries picked from the hedge",
+      "Treacle pudding with custard",
+      "Spam fritters",
+      "A choc ice or 99 with a flake",
+      "Tea, very strong, with two sugars",
+      "Fish and chips out of newspaper",
+      "Liquorice — the proper black stuff",
+      "Cod liver oil from a spoon",
+      "Rhubarb and custard sweets",
+      "Sherbet dabs",
+      "A jam sandwich",
+      "Condensed milk straight from the tin",
+      "Fizzy lemonade in a glass bottle",
+      "Mint imperials",
+      "Toasted teacake with butter"
+    ],
+    sound: [
+      "The rag-and-bone man calling down the street",
+      "The clip-clop of the milkman's horse",
+      "A coal fire crackling",
+      "The ice-cream van's chime",
+      "Church bells on a Sunday morning",
+      "The football results on the radio",
+      "Rain on the conservatory roof",
+      "The whistle of a steam train",
+      "Children playing in the street",
+      "The chimes of Big Ben",
+      "A test card buzzing on the telly",
+      "The rattle of milk bottles on the doorstep",
+      "Knock-down ginger and running feet",
+      "Someone winding a clock",
+      "The wireless on in the kitchen",
+      "A vacuum cleaner — the old kind, loud",
+      "Pigeons cooing on a windowsill",
+      "Seagulls at the seaside",
+      "The shipping forecast on Radio 4",
+      "Tea being poured into china cups"
+    ],
+    touch: [
+      "A warm hot-water bottle in a cold bed",
+      "The scratch of a wool jumper",
+      "Cool linen sheets in summer",
+      "Dough being kneaded",
+      "Polishing brass with a soft cloth",
+      "The handle of an old kettle",
+      "Crisp autumn leaves underfoot",
+      "Chalk on a blackboard",
+      "Hands warmed at a coal fire",
+      "The smooth feel of a tobacco tin",
+      "A hairbrush with a wooden handle",
+      "Soapsuds in the kitchen sink",
+      "Kneading pastry on a marble slab",
+      "A child's hand in yours",
+      "Damp grass on bare feet",
+      "The weight of an old iron",
+      "Velvet curtains between your fingers",
+      "Pegging washing on the line",
+      "Threading a needle",
+      "The cold of a milk bottle on the doorstep"
+    ],
+    sight: [
+      "Washing flapping on the line",
+      "Curtains drawn against the blackout",
+      "Snow at the window first thing",
+      "A coal man tipping sacks down the chute",
+      "Trolley buses on the high street",
+      "The Queen's coronation on a tiny telly",
+      "Coronation Street on a Wednesday",
+      "Fields of bluebells in spring",
+      "A red telephone box",
+      "A penny farthing or an old butcher's bicycle",
+      "The football pools coupon on the kitchen table",
+      "Striped deckchairs on the pier",
+      "An ice-cream van with a queue of children",
+      "A wedding photograph in black and white",
+      "A two-bar electric fire glowing orange",
+      "Mum at the stove in her pinny",
+      "Gran's china tea set on the dresser",
+      "The corner shop with sweet jars in the window",
+      "A red double-decker bus",
+      "Steam rising off a fresh pot of tea"
+    ]
+  };
+
+  const PROMPTS = [
+    name => `Does that bring anything back, ${name}?`,
+    () => `Where would you have come across that?`,
+    () => `Who comes to mind when you think of it?`,
+    () => `What season does it feel like?`,
+    () => `Would your mum or dad have known it well?`,
+    () => `Was it something from childhood, or later?`,
+    () => `Tell me a story about it.`,
+    () => `Is it a happy memory, or something else?`,
+    () => `Can you picture exactly where you were?`
+  ];
+
+  const SENSE_META = {
+    smell: { emoji: '👃', label: 'Smell', bg: '🌷' },
+    taste: { emoji: '👅', label: 'Taste', bg: '🍰' },
+    sound: { emoji: '👂', label: 'Sound', bg: '🎵' },
+    touch: { emoji: '✋', label: 'Touch', bg: '🧶' },
+    sight: { emoji: '👁️', label: 'Sight', bg: '🎞️' }
+  };
+
+  let selectedSense = null;
+  let queue = [];
+  let stats = { total: 0, great: 0, good: 0, skip: 0 };
+
+  function shuffle(a) {
+    const b = [...a];
+    for (let i = b.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [b[i], b[j]] = [b[j], b[i]];
+    }
+    return b;
+  }
+
+  function buildQueue() {
+    if (selectedSense === 'all') {
+      const all = [];
+      Object.keys(CUES).forEach(s => CUES[s].forEach(c => all.push({ cue: c, sense: s })));
+      queue = shuffle(all);
+    } else {
+      queue = shuffle(CUES[selectedSense].map(c => ({ cue: c, sense: selectedSense })));
+    }
+  }
+
+  document.querySelectorAll('.sense-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.sense-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      selectedSense = btn.dataset.sense;
+      document.getElementById('startBtn').disabled = false;
+    });
+  });
+
+  document.getElementById('startBtn').addEventListener('click', () => {
+    if (!selectedSense) return;
+    buildQueue();
+    document.getElementById('picker').style.display = 'none';
+    document.getElementById('game').classList.add('active');
+    nextCue();
+  });
+
+  function nextCue() {
+    if (queue.length === 0) buildQueue();
+    const item = queue.shift();
+    const meta = SENSE_META[item.sense];
+    document.getElementById('senseEmoji').textContent = meta.emoji;
+    document.getElementById('senseName').textContent = meta.label;
+    document.getElementById('cueText').textContent = item.cue;
+    document.getElementById('cueCard').setAttribute('data-bg-emoji', meta.bg);
+
+    const promptList = document.getElementById('promptList');
+    promptList.innerHTML = '';
+    shuffle(PROMPTS).slice(0, 3).forEach(p => {
+      const li = document.createElement('li');
+      li.className = 'prompt-item';
+      li.textContent = p(settings.name);
+      li.addEventListener('click', () => li.classList.toggle('crossed'));
+      promptList.appendChild(li);
+    });
+
+    const wrap = document.getElementById('cardWrap');
+    wrap.classList.remove('slide-in');
+    void wrap.offsetWidth;
+    wrap.classList.add('slide-in');
+  }
+
+  function updateStats() {
+    document.getElementById('totalCount').textContent = stats.total;
+    document.getElementById('greatCount').textContent = stats.great;
+    document.getElementById('goodCount').textContent = stats.good;
+  }
+
+  document.querySelectorAll('.engage-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const r = btn.dataset.result;
+      stats.total++;
+      if (r === 'great') stats.great++;
+      else if (r === 'good') stats.good++;
+      else stats.skip++;
+      updateStats();
+      nextCue();
+    });
+  });
+
+  document.getElementById('endSession').addEventListener('click', () => {
+    document.getElementById('game').classList.remove('active');
+    document.getElementById('end').classList.add('active');
+    document.getElementById('endTotal').textContent = stats.total;
+    document.getElementById('endGreat').textContent = stats.great;
+    document.getElementById('endGood').textContent = stats.good;
+  });
+
+  document.getElementById('playAgain').addEventListener('click', (e) => {
+    e.preventDefault();
+    location.reload();
+  });
+</script>
+
+</body>
+</html>
