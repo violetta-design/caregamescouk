@@ -8,27 +8,28 @@
 @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=DM+Serif+Display:ital@0;1&display=swap');
 
 :root {
-  --bg: #f7f2ea;
-  --bg2: #efe8d8;
-  --ink: #2a1f0e;
-  --ink2: #5c4a2a;
-  --ink3: #8a7050;
+  --bg: #fdf0f0;
+  --bg2: #f7e0e0;
+  --ink: #2a1010;
+  --ink2: #6b3a3a;
+  --ink3: #9a6a6a;
   --green: #3a7d52;
   --green-bg: #e8f5ee;
   --red: #b84040;
   --red-bg: #fceaea;
-  --gold: #c08020;
-  --gold-bg: #fdf3dc;
+  --rose: #c0607a;
+  --rose-bg: #fde8ee;
+  --rose-dark: #a04060;
   --card: #ffffff;
-  --border: #d8cbb5;
-  --shadow: 0 2px 16px rgba(60,40,10,0.10);
+  --border: #e8c8c8;
+  --shadow: 0 2px 16px rgba(160,60,80,0.10);
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
   background: var(--bg);
-  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23c4a96e' fill-opacity='0.07'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23c4697e' fill-opacity='0.06'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
   color: var(--ink);
   font-family: 'Lora', Georgia, serif;
   min-height: 100vh;
@@ -38,9 +39,34 @@ body {
   align-items: center;
 }
 
+/* ── Back button ── */
+.back-btn {
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  z-index: 200;
+  background: white;
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  padding: 0.5rem 0.9rem;
+  font-family: 'Lora', serif;
+  font-size: 0.85rem;
+  color: var(--ink2);
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: var(--shadow);
+  transition: all 0.2s;
+}
+.back-btn:hover {
+  background: var(--rose-bg);
+  border-color: var(--rose);
+  color: var(--rose);
+}
+
 header {
   text-align: center;
   margin-bottom: 1.8rem;
+  margin-top: 2rem;
 }
 
 h1 {
@@ -53,7 +79,7 @@ h1 {
 
 h1 span {
   font-style: italic;
-  color: var(--gold);
+  color: var(--rose);
 }
 
 .tagline {
@@ -109,10 +135,10 @@ h1 span {
   line-height: 1.4;
 }
 
-.mode-btn:hover { border-color: var(--gold); background: var(--gold-bg); }
+.mode-btn:hover { border-color: var(--rose); background: var(--rose-bg); }
 .mode-btn.active {
-  border-color: var(--gold);
-  background: var(--gold-bg);
+  border-color: var(--rose);
+  background: var(--rose-bg);
   color: var(--ink);
   font-weight: 600;
 }
@@ -125,12 +151,12 @@ h1 span {
 }
 
 .stat-label { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink3); }
-.stat-val { font-family: 'DM Serif Display', serif; font-size: 1.8rem; color: var(--gold); line-height: 1; }
+.stat-val { font-family: 'DM Serif Display', serif; font-size: 1.8rem; color: var(--rose); line-height: 1; }
 
 /* ── Main instruction panel ── */
 .instruction-panel {
-  background: var(--gold-bg);
-  border: 2px solid var(--gold);
+  background: var(--rose-bg);
+  border: 2px solid var(--rose);
   border-radius: 16px;
   padding: 1.4rem 1.6rem;
   text-align: center;
@@ -140,7 +166,7 @@ h1 span {
   font-size: 0.72rem;
   text-transform: uppercase;
   letter-spacing: 0.12em;
-  color: var(--gold);
+  color: var(--rose);
   margin-bottom: 0.5rem;
 }
 
@@ -170,9 +196,9 @@ h1 span {
 }
 
 .item-row.current {
-  background: var(--gold-bg);
-  border-color: var(--gold);
-  box-shadow: 0 0 0 3px rgba(192,128,32,0.12);
+  background: var(--rose-bg);
+  border-color: var(--rose);
+  box-shadow: 0 0 0 3px rgba(192,96,122,0.12);
 }
 
 .item-row.done { opacity: 0.5; }
@@ -180,7 +206,7 @@ h1 span {
 .item-num {
   font-family: 'DM Serif Display', serif;
   font-size: 1.2rem;
-  color: var(--gold);
+  color: var(--rose);
   min-width: 1.6rem;
   text-align: center;
 }
@@ -191,9 +217,7 @@ h1 span {
   flex: 1;
 }
 
-.item-row.current .item-text {
-  font-weight: 600;
-}
+.item-row.current .item-text { font-weight: 600; }
 
 /* ── Answer checking ── */
 .answer-grid {
@@ -224,6 +248,7 @@ h1 span {
   border-radius: 8px;
   padding: 0.4rem 0.8rem;
   background: var(--bg);
+  font-family: 'Lora', serif;
 }
 
 .tick-btn {
@@ -239,7 +264,8 @@ h1 span {
   transition: all 0.15s;
 }
 
-.tick-btn:hover { background: var(--green); color: white; }
+.tick-btn:hover:not(:disabled) { background: var(--green); color: white; }
+.tick-btn:disabled { opacity: 0.35; cursor: default; }
 
 .cross-btn {
   background: var(--red-bg);
@@ -254,10 +280,11 @@ h1 span {
   transition: all 0.15s;
 }
 
-.cross-btn:hover { background: var(--red); color: white; }
+.cross-btn:hover:not(:disabled) { background: var(--red); color: white; }
+.cross-btn:disabled { opacity: 0.35; cursor: default; }
 
 .answer-row.correct .answer-expected { background: var(--green-bg); border-color: var(--green); }
-.answer-row.wrong .answer-expected { background: var(--red-bg); border-color: var(--red); text-decoration: line-through; color: var(--red); }
+.answer-row.wrong .answer-expected { background: var(--red-bg); border-color: var(--red); color: var(--red); }
 
 /* ── Buttons ── */
 .big-btn {
@@ -272,20 +299,18 @@ h1 span {
   letter-spacing: 0.02em;
 }
 
-.big-btn.gold {
-  background: var(--gold);
+.big-btn.rose {
+  background: var(--rose);
   color: white;
-  box-shadow: 0 3px 12px rgba(192,128,32,0.3);
+  box-shadow: 0 3px 12px rgba(192,96,122,0.3);
 }
-
-.big-btn.gold:hover { background: #a86c18; transform: translateY(-1px); }
+.big-btn.rose:hover { background: var(--rose-dark); transform: translateY(-1px); }
 
 .big-btn.green {
   background: var(--green);
   color: white;
   box-shadow: 0 3px 12px rgba(58,125,82,0.25);
 }
-
 .big-btn.green:hover { background: #2d6340; transform: translateY(-1px); }
 
 .big-btn.outline {
@@ -293,8 +318,7 @@ h1 span {
   color: var(--ink2);
   border: 1.5px solid var(--border);
 }
-
-.big-btn.outline:hover { border-color: var(--ink3); background: var(--bg2); }
+.big-btn.outline:hover { border-color: var(--rose); background: var(--rose-bg); }
 
 /* ── Result banner ── */
 .result-banner {
@@ -306,7 +330,7 @@ h1 span {
 }
 
 .result-banner.win { background: var(--green-bg); color: var(--green); border: 2px solid var(--green); }
-.result-banner.lose { background: var(--red-bg); color: var(--red); border: 2px solid var(--red); }
+.result-banner.lose { background: var(--rose-bg); color: var(--rose); border: 2px solid var(--rose); }
 
 .result-sub { font-family: 'Lora', serif; font-size: 0.95rem; margin-top: 0.4rem; font-style: italic; }
 
@@ -324,12 +348,12 @@ h1 span {
 }
 
 .tip-box {
-  background: #f0f7ff;
-  border: 1px solid #b8d4f0;
+  background: var(--rose-bg);
+  border: 1px solid var(--border);
   border-radius: 12px;
   padding: 0.9rem 1.1rem;
   font-size: 0.88rem;
-  color: #3a5a80;
+  color: var(--ink2);
   line-height: 1.6;
 }
 
@@ -337,6 +361,8 @@ h1 span {
 </style>
 </head>
 <body>
+
+<a class="back-btn" href="index.html">← Back</a>
 
 <header>
   <h1>Memory <span>Game</span></h1>
@@ -368,11 +394,11 @@ h1 span {
 
     <div class="tip-box">
       <strong>💡 How it works</strong>
-      You read the items aloud to your client, one by one. Then she tries to repeat them back in order. 
+      You read the items aloud to your client, one by one. Then she tries to repeat them back in order.
       Each round adds one more item. You tap ✓ or ✗ as she answers each one.
     </div>
 
-    <button class="big-btn gold" onclick="startGame()">▶ Start Game</button>
+    <button class="big-btn rose" onclick="startGame()">▶ Start Game</button>
 
     <div class="card" id="history-card" style="display:none">
       <div class="card-label">Recent rounds</div>
@@ -437,7 +463,6 @@ h1 span {
 </div>
 
 <script>
-// ── Data ───────────────────────────────────────────────────────────────
 const POOLS = {
   words: [
     'apple','garden','butter','candle','sparrow','teapot','window','blanket',
@@ -458,25 +483,22 @@ const POOLS = {
   numbers: []
 };
 
-// ── State ──────────────────────────────────────────────────────────────
 let mode = 'words';
 let sequence = [];
 let score = 0;
 let best = parseInt(localStorage.getItem('carerBest') || '0');
 let answerIndex = 0;
 let correctCount = 0;
-let roundHistory = [];
 
-// ── Mode ───────────────────────────────────────────────────────────────
 function setMode(m) {
   mode = m;
   document.querySelectorAll('.mode-btn').forEach(b => b.classList.remove('active'));
   document.getElementById('mode-' + m).classList.add('active');
 }
 
-// ── Game flow ──────────────────────────────────────────────────────────
 function startGame() {
-  // keep existing sequence, just add one item
+  sequence = [];
+  score = 0;
   addItem();
   renderReadPhase();
   showPhase('read');
@@ -538,19 +560,21 @@ function renderAnswerPhase() {
     const row = document.createElement('div');
     row.className = 'answer-row';
     row.id = 'arow-' + i;
+
+    // KEY FIX: always show the answer text, disable buttons for future rows
     row.innerHTML = `
       <div class="answer-num">${i + 1}</div>
       <div class="answer-expected" id="atext-${i}">${item}</div>
-      <button class="tick-btn" id="tick-${i}" onclick="markAnswer(${i}, true)" title="Correct">✓</button>
-      <button class="cross-btn" id="cross-${i}" onclick="markAnswer(${i}, false)" title="Wrong">✗</button>
+      <button class="tick-btn" id="tick-${i}" onclick="markAnswer(${i}, true)">✓</button>
+      <button class="cross-btn" id="cross-${i}" onclick="markAnswer(${i}, false)">✗</button>
     `;
-    // hide all except current
+
     if (i > 0) {
       row.querySelector('.tick-btn').disabled = true;
       row.querySelector('.cross-btn').disabled = true;
-      row.querySelector('.answer-expected').textContent = '?';
       row.style.opacity = '0.35';
     }
+
     grid.appendChild(row);
   });
 }
@@ -568,9 +592,8 @@ function updateAnswerInstruction() {
 
 function markAnswer(i, correct) {
   const row = document.getElementById('arow-' + i);
-  const atext = document.getElementById('atext-' + i);
-  atext.textContent = sequence[i]; // reveal the answer
   row.classList.add(correct ? 'correct' : 'wrong');
+
   // disable buttons for this row
   document.getElementById('tick-' + i).disabled = true;
   document.getElementById('cross-' + i).disabled = true;
@@ -586,12 +609,7 @@ function markAnswer(i, correct) {
     nextRow.querySelector('.cross-btn').disabled = false;
     nextRow.style.opacity = '1';
     updateAnswerInstruction();
-
-    if (!correct) {
-      // wrong — still show rest but note we stopped full marks here
-    }
   } else {
-    // all answered
     setTimeout(showResult, 400);
   }
 }
@@ -616,19 +634,18 @@ function showResult() {
     title.textContent = `${correctCount} out of ${total} — lovely try!`;
     sub.textContent = 'See the full list below. Have another go?';
     nextBtn.style.display = 'none';
-    // reset for fresh start
     if (score > best) { best = score; localStorage.setItem('carerBest', best); }
     score = 0;
     sequence = [];
   }
 
-  // Full list reveal
   const fl = document.getElementById('full-list');
   fl.innerHTML = '';
-  sequence.forEach((item, i) => {
+  const listToShow = sequence.length > 0 ? sequence : [];
+  listToShow.forEach((item, i) => {
     const d = document.createElement('div');
-    d.style.cssText = 'display:flex;align-items:center;gap:0.7rem;padding:0.3rem 0;border-bottom:1px dashed #d8cbb5;font-family:Lora,serif;font-size:1rem;color:#2a1f0e;';
-    d.innerHTML = `<span style="color:#c08020;font-family:\'DM Serif Display\',serif;font-size:1.1rem;">${i+1}</span> ${item}`;
+    d.style.cssText = 'display:flex;align-items:center;gap:0.7rem;padding:0.3rem 0;border-bottom:1px dashed #e8c8c8;font-family:Lora,serif;font-size:1rem;color:#2a1010;';
+    d.innerHTML = `<span style="color:#c0607a;font-family:'DM Serif Display',serif;font-size:1.1rem;">${i+1}</span> ${item}`;
     fl.appendChild(d);
   });
 
@@ -646,10 +663,8 @@ function getWinMessage(n) {
 }
 
 function giveUp() {
-  // show all remaining answers
   for (let i = answerIndex; i < sequence.length; i++) {
     const row = document.getElementById('arow-' + i);
-    document.getElementById('atext-' + i).textContent = sequence[i];
     row.style.opacity = '1';
     document.getElementById('tick-' + i).disabled = true;
     document.getElementById('cross-' + i).disabled = true;
@@ -672,7 +687,6 @@ function backToSetup() {
   showPhase('setup');
 }
 
-// ── History ────────────────────────────────────────────────────────────
 function addHistory(total, correct, win) {
   const item = document.createElement('div');
   item.className = 'history-item';
@@ -685,7 +699,6 @@ function addHistory(total, correct, win) {
   document.getElementById('history-card').style.display = 'block';
 }
 
-// ── Helpers ────────────────────────────────────────────────────────────
 function showPhase(name) {
   document.querySelectorAll('.phase').forEach(p => p.classList.remove('active'));
   document.getElementById('phase-' + name).classList.add('active');
