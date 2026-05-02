@@ -25,7 +25,7 @@
     --rose: #b8625a;
     --rose-soft: #d4877e;
     --shadow: rgba(45, 36, 24, 0.08);
-    --shadow-strong: rgba(45, 36, 24, 0.18);
+    --shadow-strong: rgba(45, 36, 24, 0.15);
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
@@ -73,7 +73,6 @@
     letter-spacing: -0.03em;
     margin-bottom: 12px;
   }
-
   h1 em { font-style: italic; color: var(--rose); font-weight: 300; }
 
   .tagline {
@@ -84,36 +83,21 @@
     font-weight: 300;
   }
 
-  .divider {
-    width: 40px; height: 1px;
-    background: var(--ink-faint);
-    margin: 28px auto;
-    opacity: 0.4;
-  }
+  .divider { width: 40px; height: 1px; background: var(--ink-faint); margin: 28px auto; opacity: 0.4; }
 
   /* Setup card */
-  .setup-card {
-    background: #fbf6ec;
-    border: 1px solid rgba(45, 36, 24, 0.08);
-    border-radius: 20px;
-    padding: 28px 24px;
-    margin-bottom: 32px;
-    box-shadow: 0 2px 12px var(--shadow);
-  }
+  .setup-card { background: #fbf6ec; border: 1px solid rgba(45,36,24,0.08); border-radius: 20px; padding: 28px 24px; margin-bottom: 32px; box-shadow: 0 2px 12px var(--shadow); }
   .setup-card.hidden { display: none; }
   .setup-title { font-family: 'Fraunces', serif; font-size: 22px; font-weight: 500; margin-bottom: 8px; }
   .setup-sub { color: var(--ink-soft); font-size: 15px; margin-bottom: 20px; line-height: 1.5; }
-
   .field { margin-bottom: 18px; }
   .field label { display: block; font-size: 13px; font-weight: 500; color: var(--ink-soft); margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.06em; }
-  .field input { width: 100%; padding: 14px 16px; border: 1.5px solid rgba(45, 36, 24, 0.12); border-radius: 12px; background: white; font-family: inherit; font-size: 17px; color: var(--ink); transition: border-color 0.2s; }
+  .field input { width: 100%; padding: 14px 16px; border: 1.5px solid rgba(45,36,24,0.12); border-radius: 12px; background: white; font-family: inherit; font-size: 17px; color: var(--ink); transition: border-color 0.2s; }
   .field input:focus { outline: none; border-color: var(--rose); }
-
   .pronoun-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
-  .pronoun-btn { padding: 14px 10px; border: 1.5px solid rgba(45, 36, 24, 0.12); border-radius: 12px; background: white; font-family: inherit; font-size: 15px; font-weight: 500; color: var(--ink); cursor: pointer; transition: all 0.2s; }
+  .pronoun-btn { padding: 14px 10px; border: 1.5px solid rgba(45,36,24,0.12); border-radius: 12px; background: white; font-family: inherit; font-size: 15px; font-weight: 500; color: var(--ink); cursor: pointer; transition: all 0.2s; }
   .pronoun-btn:hover { border-color: var(--rose-soft); }
   .pronoun-btn.active { background: var(--ink); color: var(--paper); border-color: var(--ink); }
-
   .save-btn { width: 100%; padding: 16px; background: var(--rose); color: white; border: none; border-radius: 12px; font-family: 'Fraunces', serif; font-size: 18px; font-weight: 500; cursor: pointer; margin-top: 8px; transition: background 0.2s, transform 0.1s; }
   .save-btn:hover { background: #a55650; }
   .save-btn:active { transform: scale(0.98); }
@@ -122,18 +106,16 @@
   .greeting { text-align: center; margin-bottom: 32px; }
   .greeting.hidden { display: none; }
   .greeting-name { font-family: 'Fraunces', serif; font-size: 24px; font-weight: 400; font-style: italic; color: var(--ink-soft); }
-  .change-link { display: inline-block; margin-top: 8px; font-size: 13px; color: var(--ink-faint); text-decoration: underline; text-decoration-color: rgba(138, 125, 106, 0.4); cursor: pointer; }
+  .change-link { display: inline-block; margin-top: 8px; font-size: 13px; color: var(--ink-faint); text-decoration: underline; text-decoration-color: rgba(138,125,106,0.4); cursor: pointer; }
 
   /* Game grid */
   .games-section.hidden { display: none; }
   .section-label { font-family: 'Fraunces', serif; font-style: italic; text-align: center; color: var(--ink-soft); margin-bottom: 24px; font-size: 17px; }
-
   .game-grid { display: grid; grid-template-columns: 1fr; gap: 14px; }
   @media (min-width: 520px) { .game-grid { grid-template-columns: 1fr 1fr; } }
 
+  /* Game cards — full colour background */
   .game-card {
-    background: white;
-    border: 1px solid rgba(45, 36, 24, 0.08);
     border-radius: 18px;
     padding: 24px 22px;
     cursor: pointer;
@@ -143,56 +125,64 @@
     color: inherit;
     position: relative;
     overflow: hidden;
+    border: 1.5px solid transparent;
   }
 
-  /* Coloured left bar + top tint per game */
-  .game-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0;
-    width: 4px;
-    height: 100%;
-    background: var(--accent);
-  }
-
-  .game-card::after {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 100%;
-    background: var(--accent);
-    opacity: 0.04;
-    pointer-events: none;
-  }
-
-  .game-card:hover { transform: translateY(-2px); box-shadow: 0 8px 24px var(--shadow-strong); }
+  .game-card:hover { transform: translateY(-3px); box-shadow: 0 10px 28px var(--shadow-strong); }
   .game-card:active { transform: translateY(0); }
 
-  .game-icon { font-size: 32px; margin-bottom: 12px; display: block; position: relative; z-index: 1; }
-  .game-title { font-family: 'Fraunces', serif; font-size: 21px; font-weight: 500; margin-bottom: 6px; line-height: 1.15; position: relative; z-index: 1; }
-  .game-desc { font-size: 14px; color: var(--ink-soft); line-height: 1.45; position: relative; z-index: 1; }
+  .game-icon { font-size: 32px; margin-bottom: 12px; display: block; }
+  .game-title { font-family: 'Fraunces', serif; font-size: 21px; font-weight: 500; margin-bottom: 6px; line-height: 1.15; }
+  .game-desc { font-size: 14px; line-height: 1.45; opacity: 0.8; }
 
-  /* Each game's unique accent colour */
-  .game-card.teal   { --accent: #3a8a80; }
-  .game-card.rose   { --accent: #b8625a; }
-  .game-card.amber  { --accent: #c4821a; }
-  .game-card.sage   { --accent: #5a7a50; }
-  .game-card.lavender { --accent: #7a5aa8; }
-  .game-card.terra  { --accent: #b85a3a; }
-  .game-card.slate  { --accent: #4a6a8a; }
+  /* Each game's colour */
+  .game-card.teal {
+    background: #d8eeeb;
+    border-color: rgba(58,138,128,0.25);
+    color: #0e2e2a;
+  }
+  .game-card.rose {
+    background: #f5dede;
+    border-color: rgba(184,98,90,0.25);
+    color: #2e1010;
+  }
+  .game-card.amber {
+    background: #faecd4;
+    border-color: rgba(196,130,26,0.25);
+    color: #2d1e08;
+  }
+  .game-card.sage {
+    background: #ddebd8;
+    border-color: rgba(90,122,80,0.25);
+    color: #0e2210;
+  }
+  .game-card.lavender {
+    background: #e8e0f5;
+    border-color: rgba(122,90,168,0.25);
+    color: #1e1030;
+  }
+  .game-card.terra {
+    background: #f5e0d8;
+    border-color: rgba(184,90,58,0.25);
+    color: #2e1008;
+  }
+  .game-card.slate {
+    background: #d8e4f0;
+    border-color: rgba(74,106,138,0.25);
+    color: #0e1e30;
+  }
 
   /* Footer */
-  footer { text-align: center; margin-top: 48px; padding-top: 24px; border-top: 1px solid rgba(45, 36, 24, 0.08); color: var(--ink-faint); font-size: 13px; font-style: italic; font-family: 'Fraunces', serif; }
+  footer { text-align: center; margin-top: 48px; padding-top: 24px; border-top: 1px solid rgba(45,36,24,0.08); color: var(--ink-faint); font-size: 13px; font-style: italic; font-family: 'Fraunces', serif; }
 
   /* Install prompt */
-  .install-banner { background: #fbf6ec; border: 1px solid rgba(45, 36, 24, 0.08); border-left: 3px solid var(--rose); border-radius: 12px; padding: 16px 18px; margin-bottom: 20px; display: none; position: relative; }
+  .install-banner { background: #fbf6ec; border: 1px solid rgba(45,36,24,0.08); border-left: 3px solid var(--rose); border-radius: 12px; padding: 16px 18px; margin-bottom: 20px; display: none; position: relative; }
   .install-banner.show { display: block; }
   .install-banner h4 { font-family: 'Fraunces', serif; font-size: 16px; font-weight: 500; margin-bottom: 6px; padding-right: 24px; }
   .install-banner p { font-size: 14px; color: var(--ink-soft); line-height: 1.5; }
-  .install-banner code { background: white; padding: 1px 6px; border-radius: 4px; font-size: 13px; font-family: inherit; border: 1px solid rgba(45, 36, 24, 0.1); }
   .install-close { position: absolute; top: 10px; right: 10px; background: none; border: none; font-size: 18px; color: var(--ink-faint); cursor: pointer; width: 28px; height: 28px; border-radius: 6px; }
-  .install-close:hover { background: rgba(45, 36, 24, 0.05); }
-  .install-share-icon { display: inline-block; background: white; border: 1px solid rgba(45, 36, 24, 0.15); border-radius: 4px; padding: 1px 5px; font-size: 12px; vertical-align: middle; }
+  .install-close:hover { background: rgba(45,36,24,0.05); }
+  .install-share-icon { display: inline-block; background: white; border: 1px solid rgba(45,36,24,0.15); border-radius: 4px; padding: 1px 5px; font-size: 12px; vertical-align: middle; }
 
   /* Animations */
   @keyframes fadeUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
@@ -216,7 +206,6 @@
     <p class="tagline">memory · conversation · connection</p>
   </header>
 
-  <!-- Setup (shown first time) -->
   <section class="setup-card" id="setup">
     <h2 class="setup-title">Let's set things up</h2>
     <p class="setup-sub">Just two quick things, so the games feel personal. You only need to do this once.</p>
@@ -235,7 +224,6 @@
     <button class="save-btn" id="saveBtn">Save and begin</button>
   </section>
 
-  <!-- Greeting -->
   <div class="greeting hidden" id="greeting">
     <p class="greeting-name" id="greetingName"></p>
     <a class="change-link" id="changeLink">change settings</a>
@@ -243,14 +231,12 @@
 
   <div class="divider" id="divider" style="display:none;"></div>
 
-  <!-- Install prompt -->
   <div class="install-banner" id="installBanner">
     <button class="install-close" id="installClose" aria-label="Close">×</button>
     <h4 id="installTitle">Save to your home screen</h4>
     <p id="installText">Use this like a real app — no app store needed.</p>
   </div>
 
-  <!-- Game selection -->
   <section class="games-section hidden" id="games">
     <p class="section-label">Choose today's game</p>
     <div class="game-grid">
@@ -374,7 +360,7 @@
     const text = document.getElementById('installText');
     if (isIOS) {
       title.textContent = 'Add Together to your home screen';
-      text.innerHTML = 'Tap the share button <span class="install-share-icon">⬆︎</span> at the bottom, then choose <strong>Add to Home Screen</strong>. It opens like a real app.';
+      text.innerHTML = 'Tap the share button <span class="install-share-icon">⬆︎</span> at the bottom, then choose <strong>Add to Home Screen</strong>.';
       banner.classList.add('show');
     } else if (isAndroid) {
       title.textContent = 'Install Together as an app';
