@@ -24,8 +24,6 @@
     --ink-faint: #8a7d6a;
     --rose: #b8625a;
     --rose-soft: #d4877e;
-    --sage: #7a8568;
-    --gold: #c4904a;
     --shadow: rgba(45, 36, 24, 0.08);
     --shadow-strong: rgba(45, 36, 24, 0.18);
   }
@@ -51,15 +49,11 @@
 
   .container { max-width: 640px; margin: 0 auto; }
 
-  header {
-    text-align: center;
-    padding: 24px 0 40px;
-  }
+  header { text-align: center; padding: 24px 0 40px; }
 
   .mark {
     display: inline-block;
-    width: 48px;
-    height: 48px;
+    width: 48px; height: 48px;
     border-radius: 50%;
     background: var(--ink);
     color: var(--paper);
@@ -80,11 +74,7 @@
     margin-bottom: 12px;
   }
 
-  h1 em {
-    font-style: italic;
-    color: var(--rose);
-    font-weight: 300;
-  }
+  h1 em { font-style: italic; color: var(--rose); font-weight: 300; }
 
   .tagline {
     font-family: 'Fraunces', serif;
@@ -95,8 +85,7 @@
   }
 
   .divider {
-    width: 40px;
-    height: 1px;
+    width: 40px; height: 1px;
     background: var(--ink-faint);
     margin: 28px auto;
     opacity: 0.4;
@@ -111,145 +100,36 @@
     margin-bottom: 32px;
     box-shadow: 0 2px 12px var(--shadow);
   }
-
   .setup-card.hidden { display: none; }
+  .setup-title { font-family: 'Fraunces', serif; font-size: 22px; font-weight: 500; margin-bottom: 8px; }
+  .setup-sub { color: var(--ink-soft); font-size: 15px; margin-bottom: 20px; line-height: 1.5; }
 
-  .setup-title {
-    font-family: 'Fraunces', serif;
-    font-size: 22px;
-    font-weight: 500;
-    margin-bottom: 8px;
-  }
+  .field { margin-bottom: 18px; }
+  .field label { display: block; font-size: 13px; font-weight: 500; color: var(--ink-soft); margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.06em; }
+  .field input { width: 100%; padding: 14px 16px; border: 1.5px solid rgba(45, 36, 24, 0.12); border-radius: 12px; background: white; font-family: inherit; font-size: 17px; color: var(--ink); transition: border-color 0.2s; }
+  .field input:focus { outline: none; border-color: var(--rose); }
 
-  .setup-sub {
-    color: var(--ink-soft);
-    font-size: 15px;
-    margin-bottom: 20px;
-    line-height: 1.5;
-  }
-
-  .field {
-    margin-bottom: 18px;
-  }
-
-  .field label {
-    display: block;
-    font-size: 13px;
-    font-weight: 500;
-    color: var(--ink-soft);
-    margin-bottom: 8px;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-  }
-
-  .field input {
-    width: 100%;
-    padding: 14px 16px;
-    border: 1.5px solid rgba(45, 36, 24, 0.12);
-    border-radius: 12px;
-    background: white;
-    font-family: inherit;
-    font-size: 17px;
-    color: var(--ink);
-    transition: border-color 0.2s;
-  }
-
-  .field input:focus {
-    outline: none;
-    border-color: var(--rose);
-  }
-
-  .pronoun-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 8px;
-  }
-
-  .pronoun-btn {
-    padding: 14px 10px;
-    border: 1.5px solid rgba(45, 36, 24, 0.12);
-    border-radius: 12px;
-    background: white;
-    font-family: inherit;
-    font-size: 15px;
-    font-weight: 500;
-    color: var(--ink);
-    cursor: pointer;
-    transition: all 0.2s;
-  }
-
+  .pronoun-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+  .pronoun-btn { padding: 14px 10px; border: 1.5px solid rgba(45, 36, 24, 0.12); border-radius: 12px; background: white; font-family: inherit; font-size: 15px; font-weight: 500; color: var(--ink); cursor: pointer; transition: all 0.2s; }
   .pronoun-btn:hover { border-color: var(--rose-soft); }
-  .pronoun-btn.active {
-    background: var(--ink);
-    color: var(--paper);
-    border-color: var(--ink);
-  }
+  .pronoun-btn.active { background: var(--ink); color: var(--paper); border-color: var(--ink); }
 
-  .save-btn {
-    width: 100%;
-    padding: 16px;
-    background: var(--rose);
-    color: white;
-    border: none;
-    border-radius: 12px;
-    font-family: 'Fraunces', serif;
-    font-size: 18px;
-    font-weight: 500;
-    cursor: pointer;
-    margin-top: 8px;
-    transition: background 0.2s, transform 0.1s;
-  }
-
+  .save-btn { width: 100%; padding: 16px; background: var(--rose); color: white; border: none; border-radius: 12px; font-family: 'Fraunces', serif; font-size: 18px; font-weight: 500; cursor: pointer; margin-top: 8px; transition: background 0.2s, transform 0.1s; }
   .save-btn:hover { background: #a55650; }
   .save-btn:active { transform: scale(0.98); }
 
   /* Greeting */
-  .greeting {
-    text-align: center;
-    margin-bottom: 32px;
-  }
-
+  .greeting { text-align: center; margin-bottom: 32px; }
   .greeting.hidden { display: none; }
-
-  .greeting-name {
-    font-family: 'Fraunces', serif;
-    font-size: 24px;
-    font-weight: 400;
-    font-style: italic;
-    color: var(--ink-soft);
-  }
-
-  .change-link {
-    display: inline-block;
-    margin-top: 8px;
-    font-size: 13px;
-    color: var(--ink-faint);
-    text-decoration: underline;
-    text-decoration-color: rgba(138, 125, 106, 0.4);
-    cursor: pointer;
-  }
+  .greeting-name { font-family: 'Fraunces', serif; font-size: 24px; font-weight: 400; font-style: italic; color: var(--ink-soft); }
+  .change-link { display: inline-block; margin-top: 8px; font-size: 13px; color: var(--ink-faint); text-decoration: underline; text-decoration-color: rgba(138, 125, 106, 0.4); cursor: pointer; }
 
   /* Game grid */
   .games-section.hidden { display: none; }
+  .section-label { font-family: 'Fraunces', serif; font-style: italic; text-align: center; color: var(--ink-soft); margin-bottom: 24px; font-size: 17px; }
 
-  .section-label {
-    font-family: 'Fraunces', serif;
-    font-style: italic;
-    text-align: center;
-    color: var(--ink-soft);
-    margin-bottom: 24px;
-    font-size: 17px;
-  }
-
-  .game-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 14px;
-  }
-
-  @media (min-width: 520px) {
-    .game-grid { grid-template-columns: 1fr 1fr; }
-  }
+  .game-grid { display: grid; grid-template-columns: 1fr; gap: 14px; }
+  @media (min-width: 520px) { .game-grid { grid-template-columns: 1fr 1fr; } }
 
   .game-card {
     background: white;
@@ -265,120 +145,57 @@
     overflow: hidden;
   }
 
+  /* Coloured left bar + top tint per game */
   .game-card::before {
     content: '';
     position: absolute;
     top: 0; left: 0;
     width: 4px;
     height: 100%;
-    background: var(--accent, var(--rose));
+    background: var(--accent);
   }
 
-  .game-card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 24px var(--shadow-strong);
+  .game-card::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 100%;
+    background: var(--accent);
+    opacity: 0.04;
+    pointer-events: none;
   }
+
+  .game-card:hover { transform: translateY(-2px); box-shadow: 0 8px 24px var(--shadow-strong); }
   .game-card:active { transform: translateY(0); }
 
-  .game-icon {
-    font-size: 32px;
-    margin-bottom: 12px;
-    display: block;
-  }
+  .game-icon { font-size: 32px; margin-bottom: 12px; display: block; position: relative; z-index: 1; }
+  .game-title { font-family: 'Fraunces', serif; font-size: 21px; font-weight: 500; margin-bottom: 6px; line-height: 1.15; position: relative; z-index: 1; }
+  .game-desc { font-size: 14px; color: var(--ink-soft); line-height: 1.45; position: relative; z-index: 1; }
 
-  .game-title {
-    font-family: 'Fraunces', serif;
-    font-size: 21px;
-    font-weight: 500;
-    margin-bottom: 6px;
-    line-height: 1.15;
-  }
-
-  .game-desc {
-    font-size: 14px;
-    color: var(--ink-soft);
-    line-height: 1.45;
-  }
-
-  .game-card.places { --accent: #5b7a8a; }
-  .game-card.memory { --accent: var(--sage); }
-  .game-card.songs { --accent: var(--rose); }
-  .game-card.tasks { --accent: var(--gold); }
-  .game-card.faces { --accent: #9d6b8c; }
-  .game-card.thennow { --accent: #8a6a5b; }
-  .game-card.senses { --accent: #b8804a; }
+  /* Each game's unique accent colour */
+  .game-card.teal   { --accent: #3a8a80; }
+  .game-card.rose   { --accent: #b8625a; }
+  .game-card.amber  { --accent: #c4821a; }
+  .game-card.sage   { --accent: #5a7a50; }
+  .game-card.lavender { --accent: #7a5aa8; }
+  .game-card.terra  { --accent: #b85a3a; }
+  .game-card.slate  { --accent: #4a6a8a; }
 
   /* Footer */
-  footer {
-    text-align: center;
-    margin-top: 48px;
-    padding-top: 24px;
-    border-top: 1px solid rgba(45, 36, 24, 0.08);
-    color: var(--ink-faint);
-    font-size: 13px;
-    font-style: italic;
-    font-family: 'Fraunces', serif;
-  }
+  footer { text-align: center; margin-top: 48px; padding-top: 24px; border-top: 1px solid rgba(45, 36, 24, 0.08); color: var(--ink-faint); font-size: 13px; font-style: italic; font-family: 'Fraunces', serif; }
 
   /* Install prompt */
-  .install-banner {
-    background: #fbf6ec;
-    border: 1px solid rgba(45, 36, 24, 0.08);
-    border-left: 3px solid var(--rose);
-    border-radius: 12px;
-    padding: 16px 18px;
-    margin-bottom: 20px;
-    display: none;
-    position: relative;
-  }
+  .install-banner { background: #fbf6ec; border: 1px solid rgba(45, 36, 24, 0.08); border-left: 3px solid var(--rose); border-radius: 12px; padding: 16px 18px; margin-bottom: 20px; display: none; position: relative; }
   .install-banner.show { display: block; }
-  .install-banner h4 {
-    font-family: 'Fraunces', serif;
-    font-size: 16px;
-    font-weight: 500;
-    margin-bottom: 6px;
-    padding-right: 24px;
-  }
-  .install-banner p {
-    font-size: 14px;
-    color: var(--ink-soft);
-    line-height: 1.5;
-  }
-  .install-banner code {
-    background: white;
-    padding: 1px 6px;
-    border-radius: 4px;
-    font-size: 13px;
-    font-family: inherit;
-    border: 1px solid rgba(45, 36, 24, 0.1);
-  }
-  .install-close {
-    position: absolute;
-    top: 10px; right: 10px;
-    background: none; border: none;
-    font-size: 18px;
-    color: var(--ink-faint);
-    cursor: pointer;
-    width: 28px; height: 28px;
-    border-radius: 6px;
-  }
+  .install-banner h4 { font-family: 'Fraunces', serif; font-size: 16px; font-weight: 500; margin-bottom: 6px; padding-right: 24px; }
+  .install-banner p { font-size: 14px; color: var(--ink-soft); line-height: 1.5; }
+  .install-banner code { background: white; padding: 1px 6px; border-radius: 4px; font-size: 13px; font-family: inherit; border: 1px solid rgba(45, 36, 24, 0.1); }
+  .install-close { position: absolute; top: 10px; right: 10px; background: none; border: none; font-size: 18px; color: var(--ink-faint); cursor: pointer; width: 28px; height: 28px; border-radius: 6px; }
   .install-close:hover { background: rgba(45, 36, 24, 0.05); }
-  .install-share-icon {
-    display: inline-block;
-    background: white;
-    border: 1px solid rgba(45, 36, 24, 0.15);
-    border-radius: 4px;
-    padding: 1px 5px;
-    font-size: 12px;
-    vertical-align: middle;
-  }
+  .install-share-icon { display: inline-block; background: white; border: 1px solid rgba(45, 36, 24, 0.15); border-radius: 4px; padding: 1px 5px; font-size: 12px; vertical-align: middle; }
 
   /* Animations */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(12px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
   .fade-in { animation: fadeUp 0.5s ease-out both; }
   .fade-in:nth-child(1) { animation-delay: 0.05s; }
   .fade-in:nth-child(2) { animation-delay: 0.1s; }
@@ -403,12 +220,10 @@
   <section class="setup-card" id="setup">
     <h2 class="setup-title">Let's set things up</h2>
     <p class="setup-sub">Just two quick things, so the games feel personal. You only need to do this once.</p>
-
     <div class="field">
       <label for="nameInput">Their name</label>
       <input type="text" id="nameInput" placeholder="e.g. Mum, Gran, Bill" autocomplete="off">
     </div>
-
     <div class="field">
       <label>Pronouns</label>
       <div class="pronoun-grid">
@@ -417,11 +232,10 @@
         <button class="pronoun-btn" data-pronoun="they">They / them</button>
       </div>
     </div>
-
     <button class="save-btn" id="saveBtn">Save and begin</button>
   </section>
 
-  <!-- Greeting (shown after setup) -->
+  <!-- Greeting -->
   <div class="greeting hidden" id="greeting">
     <p class="greeting-name" id="greetingName"></p>
     <a class="change-link" id="changeLink">change settings</a>
@@ -439,46 +253,45 @@
   <!-- Game selection -->
   <section class="games-section hidden" id="games">
     <p class="section-label">Choose today's game</p>
-
     <div class="game-grid">
 
-      <a href="ive-been-there.html" class="game-card places fade-in">
+      <a href="ive-been-there.html" class="game-card teal fade-in">
         <span class="game-icon">🗺️</span>
         <h3 class="game-title">I've Been There</h3>
         <p class="game-desc">Places spark memories. Read a place name, hear what comes back.</p>
       </a>
 
-      <a href="memory-game-carer.html" class="game-card memory fade-in">
+      <a href="memory-game-carer.html" class="game-card rose fade-in">
         <span class="game-icon">🌸</span>
         <h3 class="game-title">Memory Game</h3>
         <p class="game-desc">Words, story items, or numbers — gentle recall, one round at a time.</p>
       </a>
 
-      <a href="songs-of-life.html" class="game-card songs fade-in">
+      <a href="songs-of-life.html" class="game-card amber fade-in">
         <span class="game-icon">🎵</span>
         <h3 class="game-title">Songs of a Life</h3>
         <p class="game-desc">Tunes from every decade. Music opens doors that words can't.</p>
       </a>
 
-      <a href="five-senses.html" class="game-card senses fade-in">
+      <a href="five-senses.html" class="game-card sage fade-in">
         <span class="game-icon">🌿</span>
         <h3 class="game-title">The Five Senses</h3>
         <p class="game-desc">A smell, a sound, a taste — sensory cues for the deepest memories.</p>
       </a>
 
-      <a href="faces.html" class="game-card faces fade-in">
+      <a href="faces.html" class="game-card lavender fade-in">
         <span class="game-icon">👵</span>
         <h3 class="game-title">Faces of the Family</h3>
         <p class="game-desc">Add real photos. Stories about the people who matter most.</p>
       </a>
 
-      <a href="the-way.html" class="game-card tasks fade-in">
+      <a href="the-way.html" class="game-card terra fade-in">
         <span class="game-icon">🧺</span>
         <h3 class="game-title">The Way We Did It</h3>
         <p class="game-desc">Everyday tasks of yesteryear — let them teach you how it was done.</p>
       </a>
 
-      <a href="then-and-now.html" class="game-card thennow fade-in">
+      <a href="then-and-now.html" class="game-card slate fade-in">
         <span class="game-icon">⏳</span>
         <h3 class="game-title">Then &amp; Now</h3>
         <p class="game-desc">Pairs from past and present — compare, contrast, remember.</p>
@@ -487,21 +300,14 @@
     </div>
   </section>
 
-  <footer>
-    Made with care · for the people who care
-  </footer>
+  <footer>Made with care · for the people who care</footer>
 
 </div>
 
 <script>
-  // Storage helpers
   const KEY = 'together_settings';
-  function getSettings() {
-    try { return JSON.parse(localStorage.getItem(KEY)) || null; } catch(e){ return null; }
-  }
-  function saveSettings(s) {
-    localStorage.setItem(KEY, JSON.stringify(s));
-  }
+  function getSettings() { try { return JSON.parse(localStorage.getItem(KEY)) || null; } catch(e){ return null; } }
+  function saveSettings(s) { localStorage.setItem(KEY, JSON.stringify(s)); }
 
   const setupEl = document.getElementById('setup');
   const greetingEl = document.getElementById('greeting');
@@ -525,7 +331,7 @@
   saveBtn.addEventListener('click', () => {
     const name = nameInput.value.trim();
     if (!name) { nameInput.focus(); nameInput.style.borderColor = 'var(--rose)'; return; }
-    if (!selectedPronoun) { return; }
+    if (!selectedPronoun) return;
     saveSettings({ name, pronoun: selectedPronoun });
     showGames();
   });
@@ -539,7 +345,7 @@
     if (s) {
       nameInput.value = s.name;
       const btn = document.querySelector(`.pronoun-btn[data-pronoun="${s.pronoun}"]`);
-      if (btn) { btn.click(); }
+      if (btn) btn.click();
     }
   });
 
@@ -555,25 +361,17 @@
     greetingName.textContent = `A good ${part} with ${s.name}`;
   }
 
-  // Init
-  if (getSettings()) {
-    showGames();
-  }
+  if (getSettings()) showGames();
 
-  // Install prompt — detect platform and show appropriate guidance
   function showInstallBanner() {
-    // Already installed (running as standalone PWA)? Don't show.
     if (window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true) return;
-    // User dismissed permanently? Don't show.
     if (localStorage.getItem('together_install_dismissed') === '1') return;
-
     const ua = navigator.userAgent;
     const isIOS = /iPad|iPhone|iPod/.test(ua) && !window.MSStream;
     const isAndroid = /android/i.test(ua);
     const banner = document.getElementById('installBanner');
     const title = document.getElementById('installTitle');
     const text = document.getElementById('installText');
-
     if (isIOS) {
       title.textContent = 'Add Together to your home screen';
       text.innerHTML = 'Tap the share button <span class="install-share-icon">⬆︎</span> at the bottom, then choose <strong>Add to Home Screen</strong>. It opens like a real app.';
@@ -583,9 +381,8 @@
       text.innerHTML = 'Tap the menu <span class="install-share-icon">⋮</span> (top right), then choose <strong>Install app</strong> or <strong>Add to Home screen</strong>.';
       banner.classList.add('show');
     } else {
-      // Desktop — show only if not dismissed before
       title.textContent = 'Best on a phone or tablet';
-      text.innerHTML = 'Open this link on a phone, then add it to your home screen for an app-like experience. You can also share the link by copying it from the address bar.';
+      text.innerHTML = 'Open this link on a phone, then add it to your home screen for an app-like experience.';
       banner.classList.add('show');
     }
   }
@@ -595,10 +392,7 @@
     localStorage.setItem('together_install_dismissed', '1');
   });
 
-  // Show banner only after settings exist (so first-run setup isn't crowded)
-  if (getSettings()) {
-    setTimeout(showInstallBanner, 600);
-  }
+  if (getSettings()) setTimeout(showInstallBanner, 600);
 </script>
 
 </body>
