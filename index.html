@@ -1,408 +1,765 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script>
-  (function() {
-    var key = 'together_unlocked';
-    if (localStorage.getItem(key) !== '1') {
-      var pwd = prompt('Please enter your access code:');
-      if (pwd !== '3434') {
-        document.write('<div style="font-family:sans-serif;text-align:center;padding:60px 20px;"><h2>Incorrect code.</h2><p>Please purchase Together at <a href="https://caregames.co.uk">caregames.co.uk</a> to access the app.</p></div>');
-        document.close();
-      } else {
-        localStorage.setItem(key, '1');
-      }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Care Games Co — Gentle Digital Tools for Carers & Families</title>
+  <meta name="description" content="Gentle digital tools for carers, families, and people living with dementia. Created by a live-in carer.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy: #1a2744;
+      --gold: #c9a84c;
+      --pink: #e8a0b0;
+      --cream: #fdf8f2;
+      --soft-white: #ffffff;
+      --text: #2c2c2c;
+      --muted: #6b7280;
+      --together-bg: #eef4fb;
+      --withyou-bg: #f5f0fb;
+      --border: rgba(26,39,68,0.1);
     }
-  })();
-</script>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<meta name="theme-color" content="#f4ede0">
-<title>Together — Memory & Conversation Games</title>
-<link rel="manifest" href="manifest.json">
-<link rel="apple-touch-icon" href="apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="default">
-<meta name="apple-mobile-web-app-title" content="Together">
-<meta name="description" content="Gentle memory and conversation games for people living with dementia and the people who care for them.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --paper: #f4ede0;
-    --paper-dark: #ebe1cf;
-    --ink: #2d2418;
-    --ink-soft: #5c4f3c;
-    --ink-faint: #8a7d6a;
-    --rose: #b8625a;
-    --rose-soft: #d4877e;
-    --shadow: rgba(45, 36, 24, 0.08);
-    --shadow-strong: rgba(45, 36, 24, 0.15);
-  }
 
-  * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
-  html, body {
-    background: var(--paper);
-    color: var(--ink);
-    font-family: 'Inter', -apple-system, sans-serif;
-    font-size: 17px;
-    line-height: 1.5;
-    min-height: 100vh;
-    overflow-x: hidden;
-  }
+    html { scroll-behavior: smooth; }
 
-  body {
-    background-image:
-      radial-gradient(circle at 20% 10%, rgba(196, 144, 74, 0.06) 0%, transparent 40%),
-      radial-gradient(circle at 80% 80%, rgba(184, 98, 90, 0.05) 0%, transparent 50%);
-    padding: 32px 20px 48px;
-  }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      line-height: 1.7;
+    }
 
-  .container { max-width: 640px; margin: 0 auto; }
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(253,248,242,0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      padding: 14px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
 
-  header { text-align: center; padding: 24px 0 40px; }
+    .nav-logo {
+      font-family: 'Lora', serif;
+      font-weight: 600;
+      font-size: 1.1rem;
+      color: var(--navy);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+    }
 
-  .mark {
-    display: inline-block;
-    width: 48px; height: 48px;
-    border-radius: 50%;
-    background: var(--ink);
-    color: var(--paper);
-    line-height: 48px;
-    font-family: 'Fraunces', serif;
-    font-size: 24px;
-    font-style: italic;
-    margin-bottom: 18px;
-    letter-spacing: -0.02em;
-  }
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+    }
 
-  h1 {
-    font-family: 'Fraunces', serif;
-    font-weight: 400;
-    font-size: clamp(40px, 9vw, 56px);
-    line-height: 1;
-    letter-spacing: -0.03em;
-    margin-bottom: 12px;
-  }
-  h1 em { font-style: italic; color: var(--rose); font-weight: 300; }
+    .nav-links a {
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: var(--navy);
+      text-decoration: none;
+      opacity: 0.75;
+      transition: opacity 0.2s;
+    }
 
-  .tagline {
-    font-family: 'Fraunces', serif;
-    font-style: italic;
-    color: var(--ink-soft);
-    font-size: 18px;
-    font-weight: 300;
-  }
+    .nav-links a:hover { opacity: 1; }
 
-  .divider { width: 40px; height: 1px; background: var(--ink-faint); margin: 28px auto; opacity: 0.4; }
+    /* ── HERO ── */
+    .hero {
+      min-height: 88vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 80px 24px 60px;
+      position: relative;
+      overflow: hidden;
+    }
 
-  /* Setup card */
-  .setup-card { background: #fbf6ec; border: 1px solid rgba(45,36,24,0.08); border-radius: 20px; padding: 28px 24px; margin-bottom: 32px; box-shadow: 0 2px 12px var(--shadow); }
-  .setup-card.hidden { display: none; }
-  .setup-title { font-family: 'Fraunces', serif; font-size: 22px; font-weight: 500; margin-bottom: 8px; }
-  .setup-sub { color: var(--ink-soft); font-size: 15px; margin-bottom: 20px; line-height: 1.5; }
-  .field { margin-bottom: 18px; }
-  .field label { display: block; font-size: 13px; font-weight: 500; color: var(--ink-soft); margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.06em; }
-  .field input { width: 100%; padding: 14px 16px; border: 1.5px solid rgba(45,36,24,0.12); border-radius: 12px; background: white; font-family: inherit; font-size: 17px; color: var(--ink); transition: border-color 0.2s; }
-  .field input:focus { outline: none; border-color: var(--rose); }
-  .pronoun-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
-  .pronoun-btn { padding: 14px 10px; border: 1.5px solid rgba(45,36,24,0.12); border-radius: 12px; background: white; font-family: inherit; font-size: 15px; font-weight: 500; color: var(--ink); cursor: pointer; transition: all 0.2s; }
-  .pronoun-btn:hover { border-color: var(--rose-soft); }
-  .pronoun-btn.active { background: var(--ink); color: var(--paper); border-color: var(--ink); }
-  .save-btn { width: 100%; padding: 16px; background: var(--rose); color: white; border: none; border-radius: 12px; font-family: 'Fraunces', serif; font-size: 18px; font-weight: 500; cursor: pointer; margin-top: 8px; transition: background 0.2s, transform 0.1s; }
-  .save-btn:hover { background: #a55650; }
-  .save-btn:active { transform: scale(0.98); }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 70% 50% at 20% 40%, rgba(201,168,76,0.08) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 50% at 80% 60%, rgba(232,160,176,0.1) 0%, transparent 55%);
+      pointer-events: none;
+    }
 
-  /* Greeting */
-  .greeting { text-align: center; margin-bottom: 32px; }
-  .greeting.hidden { display: none; }
-  .greeting-name { font-family: 'Fraunces', serif; font-size: 24px; font-weight: 400; font-style: italic; color: var(--ink-soft); }
-  .change-link { display: inline-block; margin-top: 8px; font-size: 13px; color: var(--ink-faint); text-decoration: underline; text-decoration-color: rgba(138,125,106,0.4); cursor: pointer; }
+    .logo-lockup {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      margin-bottom: 36px;
+      animation: fadeUp 0.8s ease both;
+    }
 
-  /* Game grid */
-  .games-section.hidden { display: none; }
-  .section-label { font-family: 'Fraunces', serif; font-style: italic; text-align: center; color: var(--ink-soft); margin-bottom: 24px; font-size: 17px; }
-  .game-grid { display: grid; grid-template-columns: 1fr; gap: 14px; }
-  @media (min-width: 520px) { .game-grid { grid-template-columns: 1fr 1fr; } }
+    /* Inline SVG logo */
+    .logo-icon {
+      width: 80px;
+      height: 80px;
+      filter: drop-shadow(0 4px 16px rgba(201,168,76,0.25));
+    }
 
-  /* Game cards — full colour background */
-  .game-card {
-    border-radius: 18px;
-    padding: 24px 22px;
-    cursor: pointer;
-    transition: transform 0.15s, box-shadow 0.2s;
-    display: block;
-    text-decoration: none;
-    color: inherit;
-    position: relative;
-    overflow: hidden;
-    border: 1.5px solid transparent;
-  }
+    .brand-name {
+      font-family: 'Lora', serif;
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 600;
+      color: var(--navy);
+      letter-spacing: -0.01em;
+      line-height: 1.2;
+    }
 
-  .game-card:hover { transform: translateY(-3px); box-shadow: 0 10px 28px var(--shadow-strong); }
-  .game-card:active { transform: translateY(0); }
+    .brand-tagline {
+      font-size: 1rem;
+      color: var(--gold);
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      font-size: 0.82rem;
+    }
 
-  .game-icon { font-size: 32px; margin-bottom: 12px; display: block; }
-  .game-title { font-family: 'Fraunces', serif; font-size: 21px; font-weight: 500; margin-bottom: 6px; line-height: 1.15; }
-  .game-desc { font-size: 14px; line-height: 1.45; opacity: 0.8; }
+    .hero-copy {
+      max-width: 560px;
+      animation: fadeUp 0.8s 0.15s ease both;
+    }
 
-  /* Each game's colour */
-  .game-card.teal {
-    background: #d8eeeb;
-    border-color: rgba(58,138,128,0.25);
-    color: #0e2e2a;
-  }
-  .game-card.rose {
-    background: #f5dede;
-    border-color: rgba(184,98,90,0.25);
-    color: #2e1010;
-  }
-  .game-card.amber {
-    background: #faecd4;
-    border-color: rgba(196,130,26,0.25);
-    color: #2d1e08;
-  }
-  .game-card.sage {
-    background: #ddebd8;
-    border-color: rgba(90,122,80,0.25);
-    color: #0e2210;
-  }
-  .game-card.lavender {
-    background: #e8e0f5;
-    border-color: rgba(122,90,168,0.25);
-    color: #1e1030;
-  }
-  .game-card.terra {
-    background: #f5e0d8;
-    border-color: rgba(184,90,58,0.25);
-    color: #2e1008;
-  }
-  .game-card.slate {
-    background: #d8e4f0;
-    border-color: rgba(74,106,138,0.25);
-    color: #0e1e30;
-  }
+    .hero-copy p {
+      font-size: 1.15rem;
+      color: var(--muted);
+      line-height: 1.8;
+      font-weight: 300;
+    }
 
-  /* Footer */
-  footer { text-align: center; margin-top: 48px; padding-top: 24px; border-top: 1px solid rgba(45,36,24,0.08); color: var(--ink-faint); font-size: 13px; font-style: italic; font-family: 'Fraunces', serif; }
+    .hero-copy em {
+      font-family: 'Lora', serif;
+      font-style: italic;
+      color: var(--navy);
+      font-weight: 400;
+    }
 
-  /* Install prompt */
-  .install-banner { background: #fbf6ec; border: 1px solid rgba(45,36,24,0.08); border-left: 3px solid var(--rose); border-radius: 12px; padding: 16px 18px; margin-bottom: 20px; display: none; position: relative; }
-  .install-banner.show { display: block; }
-  .install-banner h4 { font-family: 'Fraunces', serif; font-size: 16px; font-weight: 500; margin-bottom: 6px; padding-right: 24px; }
-  .install-banner p { font-size: 14px; color: var(--ink-soft); line-height: 1.5; }
-  .install-close { position: absolute; top: 10px; right: 10px; background: none; border: none; font-size: 18px; color: var(--ink-faint); cursor: pointer; width: 28px; height: 28px; border-radius: 6px; }
-  .install-close:hover { background: rgba(45,36,24,0.05); }
-  .install-share-icon { display: inline-block; background: white; border: 1px solid rgba(45,36,24,0.15); border-radius: 4px; padding: 1px 5px; font-size: 12px; vertical-align: middle; }
+    .hero-ctas {
+      margin-top: 40px;
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      justify-content: center;
+      animation: fadeUp 0.8s 0.3s ease both;
+    }
 
-  /* Animations */
-  @keyframes fadeUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
-  .fade-in { animation: fadeUp 0.5s ease-out both; }
-  .fade-in:nth-child(1) { animation-delay: 0.05s; }
-  .fade-in:nth-child(2) { animation-delay: 0.1s; }
-  .fade-in:nth-child(3) { animation-delay: 0.15s; }
-  .fade-in:nth-child(4) { animation-delay: 0.2s; }
-  .fade-in:nth-child(5) { animation-delay: 0.25s; }
-  .fade-in:nth-child(6) { animation-delay: 0.3s; }
-  .fade-in:nth-child(7) { animation-delay: 0.35s; }
-</style>
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      border-radius: 50px;
+      font-size: 0.95rem;
+      font-weight: 500;
+      cursor: pointer;
+      text-decoration: none;
+      transition: transform 0.18s, box-shadow 0.18s;
+      border: none;
+    }
+
+    .btn:hover { transform: translateY(-2px); }
+
+    .btn-primary {
+      background: var(--navy);
+      color: #fff;
+      box-shadow: 0 4px 20px rgba(26,39,68,0.25);
+    }
+
+    .btn-primary:hover { box-shadow: 0 8px 28px rgba(26,39,68,0.3); }
+
+    .btn-secondary {
+      background: var(--soft-white);
+      color: var(--navy);
+      border: 1.5px solid var(--border);
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    }
+
+    .btn-gold {
+      background: var(--gold);
+      color: #fff;
+      box-shadow: 0 4px 20px rgba(201,168,76,0.3);
+    }
+
+    .btn-gold:hover { box-shadow: 0 8px 28px rgba(201,168,76,0.4); }
+
+    .scroll-hint {
+      margin-top: 56px;
+      font-size: 0.8rem;
+      color: var(--muted);
+      opacity: 0.6;
+      animation: fadeUp 0.8s 0.5s ease both, bounce 2s 1.5s ease-in-out infinite;
+      letter-spacing: 0.05em;
+    }
+
+    /* ── DIVIDER ── */
+    .divider {
+      text-align: center;
+      padding: 12px 0;
+    }
+
+    .divider-line {
+      display: inline-flex;
+      align-items: center;
+      gap: 16px;
+      color: var(--gold);
+      font-size: 1.2rem;
+      opacity: 0.6;
+    }
+
+    .divider-line::before,
+    .divider-line::after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 1px;
+      background: var(--gold);
+      opacity: 0.4;
+    }
+
+    /* ── SECTION SHARED ── */
+    section {
+      padding: 80px 24px;
+    }
+
+    .section-inner {
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-family: 'Lora', serif;
+      font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+      color: var(--navy);
+      margin-bottom: 20px;
+      line-height: 1.3;
+    }
+
+    /* ── APP CARDS ── */
+    .apps-section {
+      background: var(--soft-white);
+    }
+
+    .apps-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 28px;
+      margin-top: 48px;
+    }
+
+    .app-card {
+      border-radius: 20px;
+      padding: 40px 36px;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+
+    .app-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 48px rgba(0,0,0,0.1);
+    }
+
+    .app-card.together { background: var(--together-bg); }
+    .app-card.withyou { background: var(--withyou-bg); }
+
+    .app-card::before {
+      content: '';
+      position: absolute;
+      top: -40px;
+      right: -40px;
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      opacity: 0.08;
+    }
+
+    .app-card.together::before { background: #3b7dd8; }
+    .app-card.withyou::before { background: #7c5cbf; }
+
+    .app-emoji {
+      font-size: 2.2rem;
+      margin-bottom: 16px;
+    }
+
+    .app-name {
+      font-family: 'Lora', serif;
+      font-size: 1.6rem;
+      color: var(--navy);
+      margin-bottom: 8px;
+    }
+
+    .app-price {
+      display: inline-block;
+      font-size: 0.85rem;
+      font-weight: 500;
+      padding: 4px 14px;
+      border-radius: 20px;
+      margin-bottom: 20px;
+    }
+
+    .together .app-price {
+      background: rgba(59,125,216,0.12);
+      color: #2d6ab8;
+    }
+
+    .withyou .app-price {
+      background: rgba(124,92,191,0.12);
+      color: #6244a8;
+    }
+
+    .app-desc {
+      font-size: 0.96rem;
+      color: var(--muted);
+      line-height: 1.75;
+      margin-bottom: 28px;
+    }
+
+    .app-features {
+      list-style: none;
+      margin-bottom: 32px;
+    }
+
+    .app-features li {
+      font-size: 0.88rem;
+      color: var(--navy);
+      padding: 5px 0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .app-features li::before {
+      content: '✦';
+      color: var(--gold);
+      font-size: 0.65rem;
+      flex-shrink: 0;
+    }
+
+    .card-btns {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn-together {
+      background: #3b7dd8;
+      color: #fff;
+      box-shadow: 0 4px 16px rgba(59,125,216,0.3);
+    }
+
+    .btn-withyou {
+      background: #7c5cbf;
+      color: #fff;
+      box-shadow: 0 4px 16px rgba(124,92,191,0.3);
+    }
+
+    .btn-outline-together {
+      background: transparent;
+      color: #3b7dd8;
+      border: 1.5px solid #3b7dd8;
+    }
+
+    .btn-outline-withyou {
+      background: transparent;
+      color: #7c5cbf;
+      border: 1.5px solid #7c5cbf;
+    }
+
+    /* ── STORY ── */
+    .story-section {
+      background: var(--navy);
+      color: #fff;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .story-section::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background:
+        radial-gradient(ellipse 50% 60% at 90% 50%, rgba(201,168,76,0.08) 0%, transparent 60%),
+        radial-gradient(ellipse 40% 50% at 10% 80%, rgba(232,160,176,0.06) 0%, transparent 55%);
+      pointer-events: none;
+    }
+
+    .story-inner {
+      max-width: 680px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .story-section .section-label { color: var(--pink); }
+
+    .story-section .section-title { color: #fff; }
+
+    .story-quote {
+      font-family: 'Lora', serif;
+      font-style: italic;
+      font-size: clamp(1.1rem, 2.5vw, 1.35rem);
+      line-height: 1.75;
+      color: rgba(255,255,255,0.88);
+      border-left: 3px solid var(--gold);
+      padding-left: 24px;
+      margin: 24px 0;
+    }
+
+    .story-body {
+      font-size: 0.97rem;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.85;
+    }
+
+    .creator-sig {
+      margin-top: 36px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .creator-avatar {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--gold), var(--pink));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Lora', serif;
+      font-size: 1.3rem;
+      color: #fff;
+      flex-shrink: 0;
+    }
+
+    .creator-name {
+      font-family: 'Lora', serif;
+      font-size: 1rem;
+      color: #fff;
+    }
+
+    .creator-role {
+      font-size: 0.83rem;
+      color: rgba(255,255,255,0.55);
+    }
+
+    /* ── REVIEWS ── */
+    .reviews-section { background: var(--cream); }
+
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      margin-top: 48px;
+    }
+
+    .review-card {
+      background: var(--soft-white);
+      border-radius: 16px;
+      padding: 32px 28px;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.05);
+      border: 1px solid var(--border);
+      transition: transform 0.2s;
+    }
+
+    .review-card:hover { transform: translateY(-3px); }
+
+    .stars {
+      color: var(--gold);
+      font-size: 1rem;
+      margin-bottom: 14px;
+      letter-spacing: 2px;
+    }
+
+    .review-text {
+      font-family: 'Lora', serif;
+      font-style: italic;
+      font-size: 0.97rem;
+      color: var(--navy);
+      line-height: 1.75;
+      margin-bottom: 20px;
+    }
+
+    .reviewer {
+      font-size: 0.83rem;
+      color: var(--muted);
+      font-weight: 500;
+    }
+
+    .reviewer strong {
+      color: var(--navy);
+      font-weight: 500;
+    }
+
+    /* ── CTA FOOTER ── */
+    .cta-section {
+      background: var(--soft-white);
+      text-align: center;
+      padding: 80px 24px;
+    }
+
+    .cta-section .section-title {
+      max-width: 500px;
+      margin: 0 auto 16px;
+    }
+
+    .cta-section p {
+      color: var(--muted);
+      margin-bottom: 36px;
+      font-size: 0.97rem;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--navy);
+      color: rgba(255,255,255,0.5);
+      text-align: center;
+      padding: 32px 24px;
+      font-size: 0.82rem;
+    }
+
+    footer a {
+      color: var(--gold);
+      text-decoration: none;
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(6px); }
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 600px) {
+      nav { padding: 12px 20px; }
+      .nav-links { gap: 16px; }
+      .nav-links li:nth-child(3) { display: none; }
+      section { padding: 60px 20px; }
+      .app-card { padding: 32px 24px; }
+      .hero-ctas { flex-direction: column; align-items: center; }
+    }
+  </style>
 </head>
 <body>
 
-<div class="container">
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-logo">Care Games Co</a>
+    <ul class="nav-links">
+      <li><a href="#apps">Our Apps</a></li>
+      <li><a href="#story">Our Story</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+    </ul>
+  </nav>
 
-  <header>
-    <div class="mark">T</div>
-    <h1>Together<em>.</em></h1>
-    <p class="tagline">memory · conversation · connection</p>
-  </header>
-
-  <!-- BUY NOW BANNER -->
-  <div style="background:var(--ink);border-radius:20px;padding:18px 20px;margin-bottom:28px;display:flex;align-items:center;justify-content:space-between;gap:12px;box-shadow:0 4px 20px rgba(45,36,24,.15)">
-    <div>
-      <div style="font-family:'Fraunces',serif;font-size:16px;font-weight:500;color:var(--paper);line-height:1.3">Together — Memory &amp; Conversation Games</div>
-      <div style="font-size:12px;color:rgba(244,237,224,.65);margin-top:2px;font-weight:500">One-time purchase · 7 games included</div>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="logo-lockup">
+      <img src="logo.jpg" alt="Care Games Co logo" class="logo-icon" style="width:120px; height:120px; object-fit:contain; border-radius:16px; filter:drop-shadow(0 4px 20px rgba(201,168,76,0.3));">
+      <div></div>
     </div>
-    <a href="https://buy.stripe.com/14A9AT0ondKH7qK2tz7ss02" target="_blank" style="background:var(--rose);color:#fff;font-family:'Inter',sans-serif;font-size:14px;font-weight:700;padding:10px 18px;border-radius:12px;text-decoration:none;white-space:nowrap;box-shadow:0 2px 8px rgba(184,98,90,.35);flex-shrink:0">Buy £15</a>
-  </div>
 
-  <section class="setup-card" id="setup">
-    <h2 class="setup-title">Let's set things up</h2>
-    <p class="setup-sub">Just two quick things, so the games feel personal. You only need to do this once.</p>
-    <div class="field">
-      <label for="nameInput">Their name</label>
-      <input type="text" id="nameInput" placeholder="e.g. Mum, Gran, Bill" autocomplete="off">
+    <div class="hero-copy">
+      <p>Gentle digital tools for <em>carers, families,</em> and people living with dementia — designed from the inside out, with real lived experience at the heart of every feature.</p>
     </div>
-    <div class="field">
-      <label>Pronouns</label>
-      <div class="pronoun-grid">
-        <button class="pronoun-btn" data-pronoun="she">She / her</button>
-        <button class="pronoun-btn" data-pronoun="he">He / him</button>
-        <button class="pronoun-btn" data-pronoun="they">They / them</button>
+
+    <div class="hero-ctas">
+      <a href="#together" class="btn btn-together">Explore Together — £15</a>
+      <a href="#withyou" class="btn btn-withyou">Explore WithYou — £25</a>
+    </div>
+
+    <div class="scroll-hint">↓ &nbsp; discover our apps</div>
+  </section>
+
+  <!-- APPS -->
+  <section class="apps-section" id="apps">
+    <div class="section-inner">
+      <div class="section-label">Our Apps</div>
+      <h2 class="section-title">Two apps. One purpose: connection.</h2>
+
+      <div class="apps-grid">
+
+        <!-- TOGETHER -->
+        <div class="app-card together" id="together">
+          <div class="app-emoji">🧩</div>
+          <div class="app-name">Together</div>
+          <span class="app-price">£15 · one-time purchase</span>
+          <p class="app-desc">Seven gentle memory games designed to be played side by side — between a carer and the person they care for. Each game is colour-themed, calm, and designed to spark natural conversation and connection rather than test or challenge.</p>
+          <ul class="app-features">
+            <li>Seven colour-themed memory games</li>
+            <li>Gentle pace — no timers, no pressure</li>
+            <li>Designed for one-to-one moments</li>
+            <li>No app store — opens instantly on any device</li>
+            <li>One-time payment, use it forever</li>
+          </ul>
+          <div class="card-btns">
+            <a href="https://buy.stripe.com/14A9AT0ondKH7qK2tz7ss02" class="btn btn-together">Buy Together — £15</a>
+          </div>
+        </div>
+
+        <!-- WITHYOU -->
+        <div class="app-card withyou" id="withyou">
+          <div class="app-emoji">🤝</div>
+          <div class="app-name">WithYou</div>
+          <span class="app-price">£25 · one-time purchase</span>
+          <p class="app-desc">A complete carer's companion — eight sections of practical tools, calming activities, and everyday support. Designed for the moments when you're not sure what to do next, and you just need something gentle and reliable to turn to.</p>
+          <ul class="app-features">
+            <li>Sound Therapy & Calm Toolkit</li>
+            <li>Routine Builder & Quick Help Guide</li>
+            <li>Conversation starters & Today's Moment</li>
+            <li>What Shall We Cook & Care Games section</li>
+            <li>No app store — opens instantly on any device</li>
+            <li>One-time payment, use it forever</li>
+          </ul>
+          <div class="card-btns">
+            <a href="https://buy.stripe.com/14A9AT3Az9urfXg8RX7ss01" class="btn btn-withyou">Buy WithYou — £25</a>
+            <a href="https://withyou.caregames.co.uk" class="btn btn-outline-withyou">See inside</a>
+          </div>
+        </div>
+
       </div>
     </div>
-    <button class="save-btn" id="saveBtn">Save and begin</button>
   </section>
 
-  <div class="greeting hidden" id="greeting">
-    <p class="greeting-name" id="greetingName"></p>
-    <a class="change-link" id="changeLink">change settings</a>
-  </div>
+  <!-- HOW IT WORKS -->
+  <section style="background:var(--cream); padding:60px 24px;">
+    <div class="section-inner" style="text-align:center;">
+      <div class="section-label">How it works</div>
+      <h2 class="section-title">Simple to buy. Instant to use.</h2>
+      <p style="color:var(--muted); margin-bottom:48px; font-size:0.97rem;">No app store. No account. No waiting. Just three steps.</p>
 
-  <div class="divider" id="divider" style="display:none;"></div>
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:32px; text-align:left;">
 
-  <div class="install-banner" id="installBanner">
-    <button class="install-close" id="installClose" aria-label="Close">×</button>
-    <h4 id="installTitle">Save to your home screen</h4>
-    <p id="installText">Use this like a real app — no app store needed.</p>
-  </div>
+        <div style="background:var(--soft-white); border-radius:16px; padding:28px 24px; border:1px solid var(--border);">
+          <div style="font-size:1.8rem; margin-bottom:12px;">💳</div>
+          <div style="font-family:'Lora',serif; font-size:1.05rem; color:var(--navy); margin-bottom:8px;">1. Buy securely</div>
+          <p style="font-size:0.88rem; color:var(--muted); line-height:1.7;">Click the Buy button and pay safely through Stripe. Your payment is secure and protected.</p>
+        </div>
 
-  <section class="games-section hidden" id="games">
-    <p class="section-label">Choose today's game</p>
-    <div class="game-grid">
+        <div style="background:var(--soft-white); border-radius:16px; padding:28px 24px; border:1px solid var(--border);">
+          <div style="font-size:1.8rem; margin-bottom:12px;">🔑</div>
+          <div style="font-family:'Lora',serif; font-size:1.05rem; color:var(--navy); margin-bottom:8px;">2. Receive your password</div>
+          <p style="font-size:0.88rem; color:var(--muted); line-height:1.7;">Immediately after payment, you'll see a confirmation screen with your private access password. Save it — you'll use it every time you open the app.</p>
+        </div>
 
-      <a href="ive-been-there.html" class="game-card teal fade-in">
-        <span class="game-icon">🗺️</span>
-        <h3 class="game-title">I've Been There</h3>
-        <p class="game-desc">Places spark memories. Read a place name, hear what comes back.</p>
-      </a>
+        <div style="background:var(--soft-white); border-radius:16px; padding:28px 24px; border:1px solid var(--border);">
+          <div style="font-size:1.8rem; margin-bottom:12px;">📱</div>
+          <div style="font-family:'Lora',serif; font-size:1.05rem; color:var(--navy); margin-bottom:8px;">3. Open your app</div>
+          <p style="font-size:0.88rem; color:var(--muted); line-height:1.7;">Visit <strong>caregames.co.uk</strong> (Together) or <strong>withyou.caregames.co.uk</strong> (WithYou), enter your password, and you're in. Works on any phone, tablet, or computer — no download needed.</p>
+        </div>
 
-      <a href="memory-game-carer.html" class="game-card rose fade-in">
-        <span class="game-icon">🌸</span>
-        <h3 class="game-title">Memory Game</h3>
-        <p class="game-desc">Words, story items, or numbers — gentle recall, one round at a time.</p>
-      </a>
+      </div>
 
-      <a href="songs-of-life.html" class="game-card amber fade-in">
-        <span class="game-icon">🎵</span>
-        <h3 class="game-title">Songs of a Life</h3>
-        <p class="game-desc">Tunes from every decade. Music opens doors that words can't.</p>
-      </a>
-
-      <a href="five-senses.html" class="game-card sage fade-in">
-        <span class="game-icon">🌿</span>
-        <h3 class="game-title">The Five Senses</h3>
-        <p class="game-desc">A smell, a sound, a taste — sensory cues for the deepest memories.</p>
-      </a>
-
-      <a href="faces.html" class="game-card lavender fade-in">
-        <span class="game-icon">👵</span>
-        <h3 class="game-title">Faces of the Family</h3>
-        <p class="game-desc">Add real photos. Stories about the people who matter most.</p>
-      </a>
-
-      <a href="the-way.html" class="game-card terra fade-in">
-        <span class="game-icon">🧺</span>
-        <h3 class="game-title">The Way We Did It</h3>
-        <p class="game-desc">Everyday tasks of yesteryear — let them teach you how it was done.</p>
-      </a>
-
-      <a href="then-and-now.html" class="game-card slate fade-in">
-        <span class="game-icon">⏳</span>
-        <h3 class="game-title">Then &amp; Now</h3>
-        <p class="game-desc">Pairs from past and present — compare, contrast, remember.</p>
-      </a>
-
+      <div style="margin-top:32px; background:var(--soft-white); border-radius:12px; padding:20px 28px; border:1px solid var(--border); display:inline-block; text-align:left; max-width:480px;">
+        <p style="font-size:0.88rem; color:var(--muted); line-height:1.7;">💡 <strong style="color:var(--navy);">Tip:</strong> Add the app to your home screen for easy one-tap access every day. On iPhone: tap Share → Add to Home Screen. On Android: tap the menu → Add to Home Screen.</p>
+      </div>
     </div>
   </section>
 
-  <footer>Made with care · for the people who care<br><span style="font-size:11px;opacity:0.6;">© 2026 Violetta Paraskevopoulou. All rights reserved. caregames.co.uk</span></footer>
+  <div class="divider"><span class="divider-line">✦</span></div>
 
-</div>
+  <!-- STORY -->
+  <section class="story-section" id="story">
+    <div class="story-inner">
+      <div class="section-label">About the Creator</div>
+      <h2 class="section-title">Built from the inside out</h2>
 
-<script>
-  const KEY = 'together_settings';
-  function getSettings() { try { return JSON.parse(localStorage.getItem(KEY)) || null; } catch(e){ return null; } }
-  function saveSettings(s) { localStorage.setItem(KEY, JSON.stringify(s)); }
+      <blockquote class="story-quote">
+        "I built these apps because I couldn't find anything gentle enough — tools that felt human, not clinical."
+      </blockquote>
 
-  const setupEl = document.getElementById('setup');
-  const greetingEl = document.getElementById('greeting');
-  const greetingName = document.getElementById('greetingName');
-  const gamesEl = document.getElementById('games');
-  const dividerEl = document.getElementById('divider');
-  const nameInput = document.getElementById('nameInput');
-  const saveBtn = document.getElementById('saveBtn');
-  const changeLink = document.getElementById('changeLink');
+      <p class="story-body">
+        I'm a live-in carer. Every day I sit with the person I care for, and I know firsthand how hard it can be to find the right thing to do in a quiet moment — something that feels meaningful, not just time-filling.<br><br>
+        Care Games Co began as a personal project to make those moments easier. Together started as a small collection of games I made for the person I care for. WithYou grew out of all the notes, guides, and little routines I'd built up over months of caring.<br><br>
+        Both apps are designed to be gentle, intuitive, and genuinely useful — for carers working in agencies, for families at home, and for anyone who wants to feel a little less alone in the caring role.
+      </p>
 
-  let selectedPronoun = null;
+      <div class="creator-sig">
+        <div class="creator-avatar">V</div>
+        <div>
+          <div class="creator-name">Violetta Paraskevopoulou</div>
+          <div class="creator-role">Founder, Care Games Co · Live-in Carer</div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  document.querySelectorAll('.pronoun-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      document.querySelectorAll('.pronoun-btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      selectedPronoun = btn.dataset.pronoun;
-    });
-  });
+  <div class="divider"><span class="divider-line">✦</span></div>
 
-  saveBtn.addEventListener('click', () => {
-    const name = nameInput.value.trim();
-    if (!name) { nameInput.focus(); nameInput.style.borderColor = 'var(--rose)'; return; }
-    if (!selectedPronoun) return;
-    saveSettings({ name, pronoun: selectedPronoun });
-    showGames();
-  });
+  <!-- REVIEWS -->
+  <section class="reviews-section" id="reviews">
+    <div class="section-inner">
+      <div class="section-label">Reviews</div>
+      <h2 class="section-title">What carers are saying</h2>
 
-  changeLink.addEventListener('click', () => {
-    const s = getSettings();
-    setupEl.classList.remove('hidden');
-    greetingEl.classList.add('hidden');
-    gamesEl.classList.add('hidden');
-    dividerEl.style.display = 'none';
-    if (s) {
-      nameInput.value = s.name;
-      const btn = document.querySelector(`.pronoun-btn[data-pronoun="${s.pronoun}"]`);
-      if (btn) btn.click();
-    }
-  });
+      <div class="reviews-grid">
 
-  function showGames() {
-    const s = getSettings();
-    if (!s) return;
-    setupEl.classList.add('hidden');
-    greetingEl.classList.remove('hidden');
-    gamesEl.classList.remove('hidden');
-    dividerEl.style.display = 'block';
-    const hour = new Date().getHours();
-    const part = hour < 12 ? 'morning' : hour < 18 ? 'afternoon' : 'evening';
-    greetingName.textContent = `A good ${part} with ${s.name}`;
-  }
+        <div class="review-card">
+          <div class="stars">★★★★★</div>
+          <p class="review-text">"Love this. What a great idea! And beautifully made. What I love most is that it doesn't feel patronising. It treats people with dementia with absolute dignity, giving them a real sense of purpose and achievement without being overly childish."</p>
+          <div class="reviewer"><strong>Oliver Card</strong> · Director, Careleaf Live-in Care</div>
+        </div>
 
-  if (getSettings()) showGames();
+        <div class="review-card">
+          <div class="stars">★★★★★</div>
+          <p class="review-text">"As a Physiotherapist, I have worked with many older adults and families facing the challenges of dementia. Finding resources that are both practical and compassionate is not always easy. I was delighted to discover WithYou and Together. Both apps have been thoughtfully designed to support not only people living with dementia but also the carers and family members who accompany them every day. What impressed me most is the genuine understanding behind these apps. They have been created by an experienced carer, and that real-world experience is reflected in every detail. I wholeheartedly recommend these apps to families, professional carers, and anyone looking for supportive, person-centred dementia care resources."</p>
+          <div class="reviewer"><strong>Rose Le Fer</strong> · Physiotherapist</div>
+        </div>
 
-  function showInstallBanner() {
-    if (window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true) return;
-    if (localStorage.getItem('together_install_dismissed') === '1') return;
-    const ua = navigator.userAgent;
-    const isIOS = /iPad|iPhone|iPod/.test(ua) && !window.MSStream;
-    const isAndroid = /android/i.test(ua);
-    const banner = document.getElementById('installBanner');
-    const title = document.getElementById('installTitle');
-    const text = document.getElementById('installText');
-    if (isIOS) {
-      title.textContent = 'Add Together to your home screen';
-      text.innerHTML = 'Tap the share button <span class="install-share-icon">⬆︎</span> at the bottom, then choose <strong>Add to Home Screen</strong>.';
-      banner.classList.add('show');
-    } else if (isAndroid) {
-      title.textContent = 'Install Together as an app';
-      text.innerHTML = 'Tap the menu <span class="install-share-icon">⋮</span> (top right), then choose <strong>Install app</strong> or <strong>Add to Home screen</strong>.';
-      banner.classList.add('show');
-    } else {
-      title.textContent = 'Best on a phone or tablet';
-      text.innerHTML = 'Open this link on a phone, then add it to your home screen for an app-like experience.';
-      banner.classList.add('show');
-    }
-  }
+        <div class="review-card">
+          <div class="stars">★★★★★</div>
+          <p class="review-text">"This website is such a thoughtful and helpful resource for anyone caring for elderly loved ones, especially those living with dementia. You can tell a huge amount of care, research, and personal understanding has gone into creating it. It offers practical ideas, reassurance, and guidance for those difficult moments when things don't go to plan, helping carers feel less alone and more confident in knowing how to respond. The suggestions for companionship, activities, and day-to-day elderly care are both compassionate and realistic. What makes the website stand out is how supportive and understanding it feels — it's not just informative, it genuinely helps people cope with the emotional side of caring too. A wonderful resource for families, carers, and anyone supporting older people at home."</p>
+          <div class="reviewer"><strong>Sandra Mattingly</strong> · Hairdresser</div>
+        </div>
 
-  document.getElementById('installClose').addEventListener('click', () => {
-    document.getElementById('installBanner').classList.remove('show');
-    localStorage.setItem('together_install_dismissed', '1');
-  });
+      </div>
+    </div>
+  </section>
 
-  if (getSettings()) setTimeout(showInstallBanner, 600);
-</script>
+  <!-- FINAL CTA -->
+  <section class="cta-section">
+    <div class="section-label" style="text-align:center">Ready to start?</div>
+    <h2 class="section-title">Choose the app that's right for you</h2>
+    <p>One-time purchase. No subscription. Works on any phone, tablet, or computer.</p>
+    <div style="display:flex; gap:16px; flex-wrap:wrap; justify-content:center;">
+      <a href="https://buy.stripe.com/14A9AT0ondKH7qK2tz7ss02" class="btn btn-together">Buy Together — £15</a>
+      <a href="https://buy.stripe.com/14A9AT3Az9urfXg8RX7ss01" class="btn btn-withyou">Buy WithYou — £25</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2026 Violetta Paraskevopoulou · Care Games Co · <a href="https://caregames.co.uk">caregames.co.uk</a></p>
+    <p style="margin-top:8px;">Made with care, for carers.</p>
+  </footer>
 
 </body>
 </html>
