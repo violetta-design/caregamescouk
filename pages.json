@@ -1,0 +1,21 @@
+{
+  "guides": [
+    { "title": "20 Activities for People with Dementia at Home", "file": "activities-for-dementia-at-home.html" },
+    { "title": "15 Games for People with Dementia", "file": "games-for-people-with-dementia.html" },
+    { "title": "Conversation Starters for Dementia", "file": "conversation-starters-for-dementia.html" },
+    { "title": "Dealing with Repeated Questions in Dementia", "file": "dealing-with-repeated-questions-dementia.html" },
+    { "title": "Understanding Dementia Wandering", "file": "understanding-dementia-wandering.html" }
+  ],
+  "stories": [
+    { "title": "A Conversation Game for Dementia Care", "file": "story-photo-memories.html" },
+    { "title": "EFT Tapping for Carer Stress Relief", "file": "story-calm-toolkit.html" },
+    { "title": "Easy Recipes for Carers — What Shall We Cook?", "file": "story-recipes.html" },
+    { "title": "Quick Help Guide for Difficult Moments", "file": "story-sos-guide.html" },
+    { "title": "The Way We Did It — Let Them Be the Expert", "file": "story-way-we-did-it.html" },
+    { "title": "Sound Therapy for Carers", "file": "story-sound-therapy.html" },
+    { "title": "When Someone Keeps Asking for Their Mother", "file": "story-mother.html" },
+    { "title": "What to Do When Someone Refuses a Shower", "file": "story-refuses-shower.html" },
+    { "title": "When the Evenings Get Hard — Understanding Sundowning", "file": "story-sundowning.html" },
+    { "title": "When Words Faded, the Music Stayed", "file": "story-music-memory.html" }
+  ]
+}
