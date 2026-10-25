@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Your Download | Made to Share by Care Games Co</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" href="/favicon-32.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy: #1a2744;
+      --gold: #c9a84c;
+      --pink: #e8a0b0;
+      --cream: #fdf8f2;
+      --text: #2c2c2c;
+      --muted: #5f6672;
+      --border: rgba(26,39,68,0.12);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      line-height: 1.7;
+      font-size: 18px;
+    }
+    header {
+      padding: 18px 20px;
+      border-bottom: 1px solid var(--border);
+      text-align: center;
+    }
+    header a {
+      font-family: 'Lora', serif;
+      font-weight: 600;
+      color: var(--navy);
+      text-decoration: none;
+      font-size: 1.05rem;
+    }
+    main { max-width: 620px; margin: 0 auto; padding: 40px 20px 60px; }
+    .eyebrow {
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      font-size: 0.78rem;
+      color: var(--gold);
+      font-weight: 500;
+      text-align: center;
+    }
+    h1 {
+      font-family: 'Lora', serif;
+      font-weight: 400;
+      color: var(--navy);
+      font-size: clamp(2rem, 6vw, 2.6rem);
+      line-height: 1.2;
+      text-align: center;
+      margin: 8px 0 14px;
+    }
+    .lead { text-align: center; color: var(--muted); margin-bottom: 30px; }
+    .card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 28px 24px;
+      margin-bottom: 22px;
+    }
+    .btn {
+      display: block;
+      width: 100%;
+      text-align: center;
+      background: var(--navy);
+      color: #fff;
+      text-decoration: none;
+      font-size: 1.2rem;
+      font-weight: 500;
+      padding: 20px 18px;
+      border-radius: 14px;
+      border: none;
+      cursor: pointer;
+    }
+    .btn:hover, .btn:focus-visible { background: #24365e; }
+    .btn:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
+    .small { font-size: 0.95rem; color: var(--muted); text-align: center; margin-top: 12px; }
+    h2 {
+      font-family: 'Lora', serif;
+      font-weight: 600;
+      color: var(--navy);
+      font-size: 1.3rem;
+      margin-bottom: 12px;
+    }
+    ol { padding-left: 1.3em; }
+    ol li { margin-bottom: 10px; }
+    .save {
+      background: #fff7e6;
+      border: 2px solid var(--gold);
+    }
+    .save strong { color: var(--navy); }
+    .help { text-align: center; }
+    .help a { color: var(--navy); font-weight: 500; }
+    .hidden { display: none; }
+    .spinner {
+      width: 38px; height: 38px; margin: 10px auto 16px;
+      border: 4px solid #eee; border-top-color: var(--gold);
+      border-radius: 50%;
+      animation: spin 0.9s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    footer {
+      text-align: center;
+      font-size: 0.9rem;
+      color: var(--muted);
+      padding: 24px 20px 40px;
+    }
+    footer .heart { color: var(--pink); }
+  </style>
+</head>
+<body>
+  <header><a href="/">Care Games Co</a></header>
+
+  <main>
+    <!-- Checking -->
+    <section id="checking">
+      <p class="eyebrow">Made to Share</p>
+      <h1>One moment…</h1>
+      <div class="spinner" aria-hidden="true"></div>
+      <p class="lead" role="status">Checking your purchase.</p>
+    </section>
+
+    <!-- Ready -->
+    <section id="ready" class="hidden">
+      <p class="eyebrow">Made to Share</p>
+      <h1>Thank you. Your collection is ready.</h1>
+      <p class="lead">20 printable activities to make together, in one PDF file.</p>
+
+      <div class="card">
+        <a id="downloadBtn" class="btn" href="#">Download your collection (PDF)</a>
+        <p class="small">You can download it as many times as you need, from any device.</p>
+      </div>
+
+      <div class="card save">
+        <h2>Please save this page</h2>
+        <p><strong>This page is your download page.</strong> Add it to your bookmarks or favourites now, so you can come back and download the collection again on another phone, tablet or computer.</p>
+      </div>
+
+      <div class="card">
+        <h2>Finding your file</h2>
+        <ol>
+          <li><strong>On a phone or tablet:</strong> after tapping the button, look in your <strong>Files</strong> app, in the <strong>Downloads</strong> folder.</li>
+          <li><strong>On a computer:</strong> the file goes to your <strong>Downloads</strong> folder.</li>
+          <li>The file is called <strong>Made-to-Share-Complete-Collection.pdf</strong>.</li>
+          <li>When printing, choose A4 and <strong>"Actual size"</strong> or <strong>100%</strong>, and print only the pages you need.</li>
+        </ol>
+      </div>
+
+      <div class="card help">
+        <h2>Lost your file?</h2>
+        <p>Email <a href="mailto:hello@caregames.co.uk">hello@caregames.co.uk</a> and I'll send it again.</p>
+        <p class="small">Violetta, Care Games Co</p>
+      </div>
+    </section>
+
+    <!-- Problem -->
+    <section id="problem" class="hidden">
+      <p class="eyebrow">Made to Share</p>
+      <h1 id="problemTitle">We couldn't find your purchase</h1>
+      <div class="card help">
+        <p id="problemText">Please don't worry. Email <a href="mailto:hello@caregames.co.uk">hello@caregames.co.uk</a> with the name or email you used to pay, and I'll send your collection straight away.</p>
+        <p class="small" id="retryWrap"><a href="#" id="retry">Try again</a></p>
+      </div>
+    </section>
+  </main>
+
+  <footer>Made with <span class="heart">♥</span> by a live-in carer · <a href="/" style="color:inherit">caregames.co.uk</a></footer>
+
+  <script>
+    (function () {
+      var params = new URLSearchParams(window.location.search);
+      var id = params.get("session_id") || "";
+      var api = "/.netlify/functions/mts-download?session_id=" + encodeURIComponent(id);
+
+      function show(which) {
+        ["checking", "ready", "problem"].forEach(function (s) {
+          document.getElementById(s).classList.toggle("hidden", s !== which);
+        });
+      }
+
+      function problem(reason) {
+        var title = document.getElementById("problemTitle");
+        var text = document.getElementById("problemText");
+        var mail = '<a href="mailto:hello@caregames.co.uk">hello@caregames.co.uk</a>';
+        if (reason === "refunded") {
+          title.textContent = "This purchase was refunded";
+          text.innerHTML = "The download is no longer available for this purchase. If you think this is a mistake, please email " + mail + ".";
+        } else if (reason === "unpaid") {
+          title.textContent = "Your payment hasn't come through yet";
+          text.innerHTML = "This can take a minute. Please try again shortly. If it still doesn't work, email " + mail + " and I'll help.";
+        } else if (reason === "network" || reason === "stripe_error" || reason === "setup") {
+          title.textContent = "Something went wrong on our side";
+          text.innerHTML = "Your purchase is safe. Please try again in a few minutes, or email " + mail + " and I'll send your collection.";
+        }
+        document.getElementById("retryWrap").classList.toggle("hidden",
+          !(reason === "unpaid" || reason === "network" || reason === "stripe_error"));
+        show("problem");
+      }
+
+      function check() {
+        show("checking");
+        if (!/^cs_(live|test)_/.test(id)) { problem("missing"); return; }
+        fetch(api, { cache: "no-store" })
+          .then(function (r) { return r.json(); })
+          .then(function (d) {
+            if (d && d.ok) {
+              document.getElementById("downloadBtn").href = api + "&file=1";
+              show("ready");
+            } else {
+              problem(d && d.reason);
+            }
+          })
+          .catch(function () { problem("network"); });
+      }
+
+      document.getElementById("retry").addEventListener("click", function (e) {
+        e.preventDefault();
+        check();
+      });
+
+      check();
+    })();
+  </script>
+</body>
+</html>
