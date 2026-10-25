@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Care Games Co — Gentle Digital Tools for Carers & Families</title>
-  <meta name="description" content="Gentle digital tools for carers, families, and people living with dementia. Created by a live-in carer.">
+  <title>Care Games Co — Gentle Apps and Printable Activities for Carers & Families</title>
+  <meta name="description" content="Gentle apps and printable activities for carers, families, and people living with dementia. Created by a live-in carer.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
@@ -19,6 +19,7 @@
       --muted: #6b7280;
       --together-bg: #eef4fb;
       --withyou-bg: #f5f0fb;
+      --moments-bg: #fdf1ea;
       --border: rgba(26,39,68,0.1);
     }
 
@@ -296,6 +297,62 @@
     .app-card.together::before { background: #3b7dd8; }
     .app-card.withyou::before { background: #7c5cbf; }
 
+    /* ── MADE TO SHARE ── */
+    .app-card.moments {
+      background: var(--moments-bg);
+      grid-column: 1 / -1;
+    }
+    .app-card.moments::before { background: #c8694a; }
+    .moments .app-price {
+      background: rgba(200,105,74,0.12);
+      color: #a9522f;
+    }
+    .moments-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 36px;
+      align-items: start;
+    }
+    .moments-gallery {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    .moments-gallery figure { margin: 0; }
+    .moments-gallery img {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      border-radius: 14px;
+      display: block;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.10);
+    }
+    .moments-gallery figcaption {
+      font-size: 0.76rem;
+      color: var(--muted);
+      margin-top: 6px;
+      text-align: center;
+    }
+    .gallery-note {
+      font-size: 0.78rem;
+      color: var(--muted);
+      font-style: italic;
+      margin-top: 12px;
+      text-align: center;
+    }
+    .btn-moments {
+      background: #c8694a;
+      color: #fff;
+      box-shadow: 0 4px 16px rgba(200,105,74,0.3);
+    }
+    .btn-coming {
+      background: transparent;
+      color: #a9522f;
+      border: 1.5px dashed #c8694a;
+      cursor: default;
+    }
+    .btn-coming:hover { transform: none; }
+
     .app-emoji {
       font-size: 2.2rem;
       margin-bottom: 16px;
@@ -548,12 +605,17 @@
     }
 
     @media (max-width: 600px) {
-      nav { padding: 12px 20px; }
-      .nav-links { gap: 16px; }
-      .nav-links li:nth-child(3) { display: none; }
+      nav { padding: 12px 16px; }
+      .nav-links { gap: 12px; }
+      .nav-links a { font-size: 0.8rem; }
+      .nav-logo { font-size: 1rem; }
+      .nav-links li:nth-child(3), .nav-links li:nth-child(4) { display: none; }
+      .nav-links a { white-space: nowrap; }
+      .nav-logo { white-space: nowrap; }
       section { padding: 60px 20px; }
       .app-card { padding: 32px 24px; }
       .hero-ctas { flex-direction: column; align-items: center; }
+      .moments-layout { grid-template-columns: 1fr; }
     }
   </style>
 <script type="application/ld+json">
@@ -610,7 +672,8 @@
   <nav>
     <a href="#" class="nav-logo">Care Games Co</a>
     <ul class="nav-links">
-      <li><a href="#apps">Our Apps</a></li>
+      <li><a href="#apps">Collections</a></li>
+      <li><a href="#made-to-share">Made to Share</a></li>
       <li><a href="#story">Our Story</a></li>
       <li><a href="#reviews">Reviews</a></li>
       <li><a href="#contact">Contact</a></li>    </ul>
@@ -626,22 +689,23 @@
     </div>
 
     <div class="hero-copy">
-      <p>Gentle digital tools for <em>carers, families,</em> and people living with dementia — designed from the inside out, with real lived experience at the heart of every feature.</p>
+      <p>Gentle apps and printable activities for <em>carers, families,</em> and people living with dementia — designed from the inside out, with real lived experience at the heart of every feature.</p>
     </div>
 
     <div class="hero-ctas">
       <a href="#together" class="btn btn-together">Explore Together — £15</a>
       <a href="#withyou" class="btn btn-withyou">Explore WithYou — £25</a>
+      <a href="#made-to-share" class="btn btn-moments">Explore Made to Share — £14</a>
     </div>
 
-    <div class="scroll-hint">↓ &nbsp; discover our apps</div>
+    <div class="scroll-hint">↓ &nbsp; discover our collections</div>
   </section>
 
   <!-- APPS -->
   <section class="apps-section" id="apps">
     <div class="section-inner">
-      <div class="section-label">Our Apps</div>
-      <h2 class="section-title">Two apps. One purpose: connection.</h2>
+      <div class="section-label">Our Collections</div>
+      <h2 class="section-title">Three collections. One purpose: meaningful moments together.</h2>
 
       <div class="apps-grid">
 
@@ -682,6 +746,52 @@
             <p style="font-size:0.8rem; color:var(--muted); margin-top:10px;">Purchased already? You're all set — just <a href="https://withyou.caregames.co.uk" style="color:#7c5cbf;">enter your password</a> to jump straight in.</p>          </div>
         </div>
 
+        <!-- MADE TO SHARE -->
+        <div class="app-card moments" id="made-to-share">
+          <div class="moments-layout">
+            <div>
+              <div class="app-emoji">🌷</div>
+              <div class="app-name">Made to Share</div>
+              <span class="app-price">£14 · one-time purchase · printable PDF</span>
+              <p class="app-desc">Twenty gentle, hands-on activities to print at home and make together. Every one becomes something real: a bouquet that never wilts, a card for a birthday, a suncatcher for the window, a quilt made by the whole family. Adult in style, never childish, and tested on paper by a carer.</p>
+              <ul class="app-features">
+                <li>20 activities that make something to keep, give or display</li>
+                <li>Bold, clear outlines that are easy to see and colour</li>
+                <li>Easy cutting along straight lines and big circles</li>
+                <li>Adaptations for low vision, tiredness and shaky hands</li>
+                <li>Touch-friendly ideas for people with sight loss</li>
+                <li>Instant PDF download, print as often as you like</li>
+              </ul>
+              <div class="card-btns">
+                <a href="https://buy.stripe.com/aFa28rfjhbCz9ySfgl7ss03" class="btn btn-moments">Buy Made to Share — £14</a>
+                <p style="font-size:0.85rem; color:var(--muted); margin-top:12px;">Not sure yet? <a href="/Made-to-Share-Free-Sample.pdf" style="color:#a9522f; font-weight:500;">Download a free sample</a> with three complete activities.</p>
+                <p style="font-size:0.8rem; color:var(--muted); margin-top:6px;">You print at home, and you can print only the activities you want.</p>
+              </div>
+            </div>
+            <div>
+              <div class="moments-gallery">
+                <figure>
+                  <img src="made-to-share-suncatcher.jpg" alt="A coloured stained-glass suncatcher glowing in a frosted window" loading="lazy">
+                  <figcaption>The Suncatcher Window</figcaption>
+                </figure>
+                <figure>
+                  <img src="made-to-share-bouquet.jpg" alt="Hand-coloured paper flowers arranged in a decorated vase" loading="lazy">
+                  <figcaption>A Bouquet That Lasts</figcaption>
+                </figure>
+                <figure>
+                  <img src="made-to-share-quilt.jpg" alt="Coloured patchwork squares for a friendship quilt" loading="lazy">
+                  <figcaption>The Friendship Quilt</figcaption>
+                </figure>
+                <figure>
+                  <img src="made-to-share-bookmarks.jpg" alt="A set of three coloured bookmarks reading Calm, Love and Home" loading="lazy">
+                  <figcaption>Bookmark Gift Set</figcaption>
+                </figure>
+              </div>
+              <p class="gallery-note">Coloured examples of four of the activities.</p>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
@@ -691,7 +801,7 @@
     <div class="section-inner" style="text-align:center;">
       <div class="section-label">How it works</div>
       <h2 class="section-title">Simple to buy. Instant to use.</h2>
-      <p style="color:var(--muted); margin-bottom:48px; font-size:0.97rem;">No app store. No account. No waiting. Just three steps.</p>
+      <p style="color:var(--muted); margin-bottom:48px; font-size:0.97rem;">For Together and WithYou: no app store, no account, no waiting. Just three steps.</p>
 
       <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:32px; text-align:left;">
 
@@ -724,12 +834,6 @@
   <div class="divider"><span class="divider-line">✦</span></div>
 
   <!-- STORY -->
-  <section class="story-section" id="story">
-    <div class="story-inner">
-      <div class="section-label">About the Creator</div>
-      <h2 class="section-title">Built from the inside out</h2>
-
-      <!-- STORY -->
   <section class="story-section" id="story">
     <div class="story-inner">
       <div class="section-label">About the Creator</div>
@@ -794,11 +898,24 @@
   <!-- FINAL CTA -->
   <section class="cta-section">
     <div class="section-label" style="text-align:center">Ready to start?</div>
-    <h2 class="section-title">Choose the app that's right for you</h2>
-    <p>One-time purchase. No subscription. Works on any phone, tablet, or computer.</p>
-    <div style="display:flex; gap:16px; flex-wrap:wrap; justify-content:center;">
-      <a href="https://buy.stripe.com/14A9AT0ondKH7qK2tz7ss02" class="btn btn-together">Buy Together — £15</a>
-      <a href="https://buy.stripe.com/14A9AT3Az9urfXg8RX7ss01" class="btn btn-withyou">Buy WithYou — £25</a>
+    <h2 class="section-title">Choose the collection that's right for you</h2>
+    <p>One-time purchase. No subscription. Yours to keep.</p>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:20px; max-width:860px; margin:0 auto; text-align:left;">
+      <div style="background:var(--together-bg); border-radius:16px; padding:24px;">
+        <div style="font-family:'Lora',serif; font-size:1.2rem; color:var(--navy);">🧩 Together</div>
+        <p style="font-size:0.88rem; margin:8px 0 18px;">Memory and conversation games to play side by side.</p>
+        <a href="https://buy.stripe.com/14A9AT0ondKH7qK2tz7ss02" class="btn btn-together">Buy Together — £15</a>
+      </div>
+      <div style="background:var(--withyou-bg); border-radius:16px; padding:24px;">
+        <div style="font-family:'Lora',serif; font-size:1.2rem; color:var(--navy);">🤝 WithYou</div>
+        <p style="font-size:0.88rem; margin:8px 0 18px;">A complete toolkit of support for carers.</p>
+        <a href="https://buy.stripe.com/14A9AT3Az9urfXg8RX7ss01" class="btn btn-withyou">Buy WithYou — £25</a>
+      </div>
+      <div style="background:var(--moments-bg); border-radius:16px; padding:24px;">
+        <div style="font-family:'Lora',serif; font-size:1.2rem; color:var(--navy);">🌷 Made to Share</div>
+        <p style="font-size:0.88rem; margin:8px 0 18px;">20 printable activities to make together.</p>
+        <a href="https://buy.stripe.com/aFa28rfjhbCz9ySfgl7ss03" class="btn btn-moments">Buy for £14</a>
+      </div>
     </div>
   </section>
  
@@ -825,7 +942,7 @@
   <h2>Carer Stories</h2>
 <!-- STORIES_START -->
 <!-- STORIES_END -->
-</section><footer>p>© 2026 Violetta Paraskevopoulou · Care Games Co · <a href="https://caregames.co.uk">caregames.co.uk</a></p>
+</section><footer><p>© 2026 Violetta Paraskevopoulou · Care Games Co · <a href="https://caregames.co.uk">caregames.co.uk</a></p>
     <p style="margin-top:8px;">Made with care, for carers.</p>
   </footer>
 
