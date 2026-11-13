@@ -340,6 +340,18 @@
       margin-top: 12px;
       text-align: center;
     }
+
+    /* ── LISTENING GARDEN ── */
+    .app-card.garden { background: #eef5ec; grid-column: 1 / -1; }
+    .app-card.garden::before { background: #5a8a4f; }
+    .garden .app-price { background: rgba(90,138,79,0.14); color: #3f6b36; }
+    .garden-layout { display: grid; grid-template-columns: 1.3fr 1fr; gap: 32px; align-items: center; }
+    .garden-covers { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+    .garden-covers img { width: 100%; border-radius: 10px; display: block; box-shadow: 0 6px 18px rgba(26,39,68,0.12); }
+    .btn-garden { background: #3f6b36; color: #fff; }
+    .btn-garden:hover { background: #335a2c; }
+    @media (max-width: 760px) { .garden-layout { grid-template-columns: 1fr; } }
+
     .btn-moments {
       background: #c8694a;
       color: #fff;
@@ -674,6 +686,7 @@
     <ul class="nav-links">
       <li><a href="#apps">Collections</a></li>
       <li><a href="#made-to-share">Made to Share</a></li>
+      <li><a href="/listening-garden.html">Audio Stories</a></li>
       <li><a href="#story">Our Story</a></li>
       <li><a href="#reviews">Reviews</a></li>
       <li><a href="#contact">Contact</a></li>    </ul>
@@ -705,7 +718,7 @@
   <section class="apps-section" id="apps">
     <div class="section-inner">
       <div class="section-label">Our Collections</div>
-      <h2 class="section-title">Three collections. One purpose: meaningful moments together.</h2>
+      <h2 class="section-title">Every collection has one purpose: meaningful moments together.</h2>
 
       <div class="apps-grid">
 
@@ -788,6 +801,33 @@
                 </figure>
               </div>
               <p class="gallery-note">Coloured examples of four of the activities.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- THE LISTENING GARDEN -->
+        <div class="app-card garden" id="listening-garden">
+          <div class="garden-layout">
+            <div>
+              <div class="app-emoji">🎧</div>
+              <div class="app-name">The Listening Garden</div>
+              <span class="app-price">Audio stories · Story 01 free to listen</span>
+              <p class="app-desc">Gentle, funny stories from the little English village of Little Bramble, read slowly and clearly with no sudden loud noises. Made for people living with dementia, and for everyone who sits and listens with them.</p>
+              <ul class="app-features">
+                <li>Short chapters, about ten minutes each</li>
+                <li>Big, simple Play buttons, easy on a phone or tablet</li>
+                <li>Story 01, The Saturday Garden Club, free to listen now</li>
+                <li>All five stories also in a large-print book on Amazon</li>
+              </ul>
+              <div class="card-btns">
+                <a href="/listening-garden.html" class="btn btn-garden">Listen to Story 01 free</a>
+                <p style="font-size:0.85rem; color:var(--muted); margin-top:12px;">Prefer to read aloud together? <a href="https://www.amazon.co.uk/dp/B0HRG4QPF2" target="_blank" rel="noopener" style="color:#3f6b36; font-weight:500;">Get the book on Amazon</a>.</p>
+              </div>
+            </div>
+            <div class="garden-covers">
+              <img src="listening-garden-story-01.jpg" alt="Cover of Story 01, The Saturday Garden Club" loading="lazy">
+              <img src="listening-garden-story-04.jpg" alt="Cover of Story 04, The Little Bramble Christmas Catastrophe" loading="lazy">
+              <img src="listening-garden-story-05.jpg" alt="Cover of Story 05, The Great Little Bramble Spring Fiasco" loading="lazy">
             </div>
           </div>
         </div>
