@@ -342,6 +342,17 @@
     }
 
     /* ── LISTENING GARDEN ── */
+    /* ── THE BRITISH CARE KITCHEN ── */
+    .app-card.kitchen { background: #fbefe9; grid-column: 1 / -1; }
+    .app-card.kitchen::before { background: #c8312b; }
+    .kitchen .app-price { background: rgba(200,49,43,0.12); color: #a52620; }
+    .kitchen-layout { display: grid; grid-template-columns: 1.3fr 1fr; gap: 32px; align-items: center; }
+    .kitchen-cover { text-align: center; }
+    .kitchen-cover img { width: 100%; max-width: 320px; border-radius: 10px; display: inline-block; box-shadow: 0 6px 18px rgba(26,39,68,0.18); }
+    .btn-kitchen { background: #c8312b; color: #fff; }
+    .btn-kitchen:hover { background: #a52620; }
+    @media (max-width: 760px) { .kitchen-layout { grid-template-columns: 1fr; } }
+
     .app-card.garden { background: #eef5ec; grid-column: 1 / -1; }
     .app-card.garden::before { background: #5a8a4f; }
     .garden .app-price { background: rgba(90,138,79,0.14); color: #3f6b36; }
@@ -686,6 +697,7 @@
     <ul class="nav-links">
       <li><a href="#apps">Collections</a></li>
       <li><a href="#made-to-share">Made to Share</a></li>
+      <li><a href="#british-care-kitchen">Cookbook</a></li>
       <li><a href="/listening-garden.html">Audio Stories</a></li>
       <li><a href="#story">Our Story</a></li>
       <li><a href="#reviews">Reviews</a></li>
@@ -737,7 +749,8 @@
           </ul>
           <div class="card-btns">
             <a href="https://buy.stripe.com/14A9AT0ondKH7qK2tz7ss02" class="btn btn-together">Buy Together — £15</a>
-            <p style="font-size:0.8rem; color:var(--muted); margin-top:10px;">Purchased already? You're all set — just <a href="https://together.caregames.co.uk" style="color:#3b7dd8;">enter your password</a> to jump straight in.</p>          </div>
+            <p style="font-size:0.8rem; color:var(--muted); margin-top:10px;">Purchased already? You're all set — just <a href="https://together.caregames.co.uk" style="color:#3b7dd8;">enter your password</a> to jump straight in.</p>
+          </div>
         </div>
 
         <!-- WITHYOU -->
@@ -756,7 +769,8 @@
           </ul>
           <div class="card-btns">
             <a href="https://buy.stripe.com/14A9AT3Az9urfXg8RX7ss01" class="btn btn-withyou">Buy WithYou — £25</a>
-            <p style="font-size:0.8rem; color:var(--muted); margin-top:10px;">Purchased already? You're all set — just <a href="https://withyou.caregames.co.uk" style="color:#7c5cbf;">enter your password</a> to jump straight in.</p>          </div>
+            <p style="font-size:0.8rem; color:var(--muted); margin-top:10px;">Purchased already? You're all set — just <a href="https://withyou.caregames.co.uk" style="color:#7c5cbf;">enter your password</a> to jump straight in.</p>
+          </div>
         </div>
 
         <!-- MADE TO SHARE -->
@@ -801,6 +815,38 @@
                 </figure>
               </div>
               <p class="gallery-note">Coloured examples of four of the activities.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- THE BRITISH CARE KITCHEN -->
+        <div class="app-card kitchen" id="british-care-kitchen">
+          <div class="kitchen-layout">
+            <div>
+              <div class="app-emoji">🍲</div>
+              <div class="app-name">The British Care Kitchen</div>
+              <span class="app-price">Paperback · £11.99 on Amazon</span>
+              <p class="app-desc">A Month of Meals: 28 easy British meals, plus puddings and snacks, written for carers and families looking after someone living with dementia. Poppy the robin adds jokes, games and "You're the Expert!" questions, so the person you cook with can share their own memories.</p>
+              <ul class="app-features">
+                <li>28 easy British main meals across four weeks, plus puddings and snacks</li>
+                <li>Oven or air fryer only, with no frying</li>
+                <li>A shopping basket and clear step-by-step instructions for every recipe</li>
+                <li>Temperatures in °C, fan °C and gas mark</li>
+                <li>"Making it easier to eat" tips with every recipe</li>
+              </ul>
+              <div class="card-btns">
+                <a href="https://www.amazon.co.uk/dp/B0HSJ8TJSD" target="_blank" rel="noopener" class="btn btn-kitchen">Get the paperback on Amazon</a>
+                <p style="font-size:0.8rem; color:var(--muted); margin-top:6px; width:100%;">Printed and posted by Amazon. Full-colour paperback, 88 pages.</p>
+                <div style="width:100%; margin-top:18px; padding-top:18px; border-top:1px solid rgba(200,49,43,0.2);">
+                  <p style="font-weight:600; color:var(--navy); margin-bottom:6px;">Prefer it on your phone or tablet?</p>
+                  <p style="font-size:0.9rem; color:var(--muted); margin-bottom:12px;">The Poppy app has every recipe, with Poppy's jokes, games and read-aloud. Add it to your home screen and use it in the kitchen.</p>
+                  <a href="https://buy.stripe.com/4gM3cv1srbCzcL40lr7ss04" class="btn btn-kitchen">Buy the Poppy app — £20</a>
+                  <p style="font-size:0.8rem; color:var(--muted); margin-top:6px;">One-time purchase. No subscription. Not happy with it? Email <a href="mailto:hello@caregames.co.uk" style="color:#a52620; font-weight:500;">hello@caregames.co.uk</a> within 14 days of buying and I will refund you.</p>
+                </div>
+              </div>
+            </div>
+            <div class="kitchen-cover">
+              <img src="british-care-kitchen-cover.jpg" alt="Cover of The British Care Kitchen: A Month of Meals, showing Poppy the robin in a chef's hat beside a cottage pie and a roast chicken" loading="lazy">
             </div>
           </div>
         </div>
