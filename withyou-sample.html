@@ -77,4 +77,20 @@ html,body{background:var(--bg);font-family:'Nunito',sans-serif;color:var(--text)
     <div class="help-card-header"><div class="help-card-icon">😠</div><div class="help-card-title">Aggression or Agitation<span class="lock">🔒</span></div><div class="help-card-tag" style="color:#A04060;background:#F5E0E8">Urgent</div></div>
   </div>
   <div class="help-card locked" onclick="goBuy()">
-    <div class="help-card-header"><div class="help-card-icon">💙</div>
+        <div class="help-card-header"><div class="help-card-icon">💙</div><div class="help-card-title">Loneliness &amp; Low Mood<span class="lock">🔒</span></div><div class="help-card-tag" style="color:#5A3A8A;background:#EDE0F5">Wellbeing</div></div>
+  </div>
+
+  <div class="cta-box" id="buy">
+    <h3>Need the other five?</h3>
+    <p>The full WithYou app has all six Quick Help topics, plus routines and a calm toolkit for anxious moments. One payment of &pound;25, no subscription.</p>
+    <a class="cta-btn" href="https://buy.stripe.com/14A9AT3Az9urfXg8RX7ss01">Get the full WithYou app</a>
+    <a class="cta-link" href="https://caregames.co.uk/#withyou">See what's inside</a>
+    <p class="cta-small">Not happy with it? Email hello@caregames.co.uk within 14 days of buying and you'll get your money back.</p>
+  </div>
+</div>
+<script>
+  function toggleHelp(){document.getElementById('hbody').classList.toggle('open')}
+  function goBuy(){document.getElementById('buy').scrollIntoView({behavior:'smooth',block:'center'})}
+</script>
+</body>
+</html>
